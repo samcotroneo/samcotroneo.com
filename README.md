@@ -17,3 +17,4 @@ A personal website and portfolio to showcase my skills, offer contact informatio
 * Provide a short form/survey connected to a back end.
 * Add a virtual puzzle or something interesting to the site.
 * Link to social media handles
+* An "engine room" that describes the architecture of the site.
