@@ -1,26 +1,31 @@
-import reactLogo from './assets/react.svg'
-import './App.css'
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import Hero from "./components/Hero";
+import NavBar from "./components/NavBar";
+import Projects from "./components/Projects";
+import Technologies from "./components/Technologies";
 
 function App() {
-
   return (
-    <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react m-auto" alt="React logo" />
-        </a>
+    <div
+      className="overflow-x-hidden text-neutral-300 antialiased
+     selection:bg-cyan-300 selection:text-cyan-900"
+    >
+      <div className="fixed top-0 -z-10 h-full w-full">
+        <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       </div>
-      <h1>Sam Cotroneo</h1>
-      <h5><em>Software Engineer, Casual Gardener, Wannabee Baker, Level 10 Dwarf Artificer.</em></h5>
-      <div className="card">
-        <p>Welcome to my personal site, it's a pleasure to have you here. I built this site so I could brush up on React and Typescript. It is styled with lots of help from TailwindCSS and the games were all made using the Phaser game engine.</p>
-        <br/>
-        <p>A bit about me, I am a software engineer with over 7 years of experience, predominantly with the .NET ecosystem (ELABORATE). Over the last few years I have had the opportunity to expand my knowledge into the web space, developing and integrating with various Web APIs, building web applications using ASP.NET and Blazor, and bringing it all together using containerisation and cloud technologies.</p>
-        <br/>
-        <p>Please, take a look around at some of the things I've made and feel free to let me know what you think by sending an email to <em>info@samcotroneo.com</em></p>
+      <div className="container mx-auto px-8">
+        <NavBar />
+        <Hero />
+        <About />
+        <Technologies />
+        <Experience />
+        <Projects />
+        <Contact />
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
