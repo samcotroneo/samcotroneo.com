@@ -1,7 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import Logo from "./Logo";
 import { CONTACT } from "../data/Content";
+import Logo from "./Logo";
 
 const NavBar = () => {
   return (
@@ -9,11 +9,13 @@ const NavBar = () => {
       <div className="flex flex-shrink-0 items-center text-4xl">
         <Logo />
       </div>
-      <div className="m-8 flex items-center justify-center gap-4 text-2xl">
+      <div className="my-8 flex items-center justify-center gap-4 text-2xl">
         <a href={CONTACT.linkedin} target="_blank">
           <FaLinkedin />
         </a>
-        <FaGithub />
+        <a href={CONTACT.github} target="_blank">
+          <FaGithub />
+        </a>
       </div>
     </nav>
   );

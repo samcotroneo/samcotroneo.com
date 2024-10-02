@@ -13,18 +13,29 @@ export const ATTRIBUTES = [
 
 export const EXPERIENCE = [
   {
-    title: "Senior Software Engineer",
+    role: "Senior Software Engineer",
     company: "Wymac Gaming Solutions",
     date: "April 2021 - Present",
-    description: "In my role as blah blah blah",
-    technologies: ["C#", ".NET", "Blazor", "SQL Server", "Azure"],
+    description:
+      "As a Senior Software Engineer I am responsible for developing Wymac's next generation Promotion system while maintaining and updating Wymac's existing promotions product which is running in production in Pubs, Clubs and Casinos all across the country.",
+    technologies: [
+      "C#",
+      ".NET",
+      "ASP.NET",
+      "Blazor",
+      "SQL Server",
+      "NGINX",
+      "Azure",
+      "Docker",
+    ],
   },
   {
-    title: "Software Engineer",
+    role: "Software Engineer",
     company: "Wymac Gaming Solutions",
     date: "December 2016 - April 2021",
-    description: "In my role as blah blah blah",
-    technologies: ["C#", ".NET"],
+    description:
+      "As a Software Engineer I worked as part of the 'Platform' team to both maintain a legacy gaming machine platform and see the product through to regulatory approval in the NSW gaming market, as well as play a pivotal role in the development of the next generation Wymac Gaming Platform (WGP) which was approved to run in gaming markets across Australia and the United States.",
+    technologies: ["C#", ".NET Framework", "WPF", "Winforms"],
   },
 ];
 
@@ -37,29 +48,30 @@ export const PROJECTS = [
     technologies: [
       "React",
       "Typescript",
-      "HTML",
       "TailwindCSS",
       "Vite",
       "GitHub Actions",
     ],
   },
   {
-    title: "Honeybee Blitz - Release Date TBA",
-    description: "TODO",
+    title: "Honeybee Blitz",
+    description:
+      "Release Date TBA - Honeybee Blitz is a fast-paced, arcade-style game where you play as a honeybee collecting nectar, tuning it into honey and avoiding obstacles.",
     link: "https://samcotroneo.com",
-    technologies: ["PhaserJS", "Typescript", "HTML", "CSS", "Webpack"],
+    technologies: ["PhaserJS", "Typescript", "Vite", "Aesprite"],
   },
   {
-    title: "BreadBuddy - Release Date TBA",
-    description: "TODO",
+    title: "BreadBuddy",
+    description:
+      "Release Date TBA - BreadBuddy is a baking companion app that helps you accurately time and track your bread baking recipe steps, as well as keep track of your sourdough starter.",
     link: "https://samcotroneo.com",
-    technologies: ["React Native", "Expo"],
+    technologies: ["React Native", "Typescript", "Expo"],
   },
 ];
 
 export const CONTACT = {
   description:
-    "Please, take a look around at some of the things I've made and feel free to let me know what you think by sending an email to info@samcotroneo.com",
+    "Thanks for stopping by! Feel free to reach out to me via the email below, or connect with me on LinkedIn or GitHub.",
   email: "info@samcotroneo.com",
   linkedin: "https://linkedin.com/in/sam-cotroneo-1255a3a9/",
   github: "https://github.com/samcotroneo",
