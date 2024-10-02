@@ -6,9 +6,9 @@ import dockerImage from "../assets/technologies/docker-svgrepo-com.svg";
 import azureImage from "../assets/technologies/azure-svgrepo-com.svg";
 import windowsImage from "../assets/technologies/microsoft-windows-svgrepo-com.svg";
 import linuxImage from "../assets/technologies/linux-svgrepo-com.svg";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-const iconVariants = (duration: number) => ({
+const iconVariants = (duration: number): Variants => ({
   initial: { y: -10 },
   animate: {
     y: [10, -10],
