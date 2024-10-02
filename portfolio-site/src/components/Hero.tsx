@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilepic from "../assets/profilePicture.png";
+import profilepic from "../assets/ProfilePicture.png";
 import { INTRO_CONTENT } from "../data/Content";
 
 const heroVariants = (delay: number) => ({
