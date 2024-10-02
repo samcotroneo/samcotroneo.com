@@ -35,6 +35,7 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
+          path: "./portfolio-site"
       - name: Install dependencies
         run: npm install
       - name: Build
