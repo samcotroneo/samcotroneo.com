@@ -1,24 +1,25 @@
-export const INTRO_CONTENT =
-  "Welcome to my personal site, it's a pleasure to have you here. I built this site so I could brush up on React and Typescript. It is styled with lots of help from TailwindCSS and the games were all made using the Phaser game engine.";
+import { Experience } from "./Experience";
+import { Project } from "./Projects";
 
-export const ABOUT_CONTENT =
-  "A bit about me, I am a software engineer with over 8 years of experience, predominantly with the .NET ecosystem (ELABORATE). Over the last few years I have had the opportunity to expand my knowledge into the web space, developing and integrating with various Web APIs, building web applications using ASP.NET and Blazor, and bringing it all together using containerisation and cloud technologies.";
+export const ABOUT_CONTENT: string[] = [
+  "I am a versatile software engineer with over 8 years of experience, predominantly with the .NET ecosystem. I pride myself on my soft skills, where empathy, collaboration, communication and a strong willingness to learn, are at the forefront of my work ethic. With experience building a range of applications using the .NET stack, my strength is predominantly on the back end. I enjoy integrating .NET and ASP.NET applications with third party APIs and network protocols, working with databases and leveraging containerisation and cloud technologies. While I am a back end developer at heart, I have a keen interest in front end development and have been working on improving my skills in this area, using Blazor professionally, and learning React in my spare time.",
+];
 
-export const ATTRIBUTES = [
+export const ATTRIBUTES: string[] = [
   "Software Engineer",
   "Casual Gardener",
   "Wannabe Baker",
   "Level 10 Dwarf Artificer",
 ];
 
-export const EXPERIENCE = [
+export const EXPERIENCE: Experience[] = [
   {
     role: "Senior Software Engineer",
     company: "Wymac Gaming Solutions",
     date: "April 2021 - Present",
     description:
       "As a Senior Software Engineer I am responsible for developing Wymac's next generation Promotion system while maintaining and updating Wymac's existing promotions product which is running in production in Pubs, Clubs and Casinos all across the country.",
-    technologies: [
+    skills: [
       "C#",
       ".NET",
       "ASP.NET",
@@ -35,11 +36,11 @@ export const EXPERIENCE = [
     date: "December 2016 - April 2021",
     description:
       "As a Software Engineer I worked as part of the 'Platform' team to both maintain a legacy gaming machine platform and see the product through to regulatory approval in the NSW gaming market, as well as play a pivotal role in the development of the next generation Wymac Gaming Platform (WGP) which was approved to run in gaming markets across Australia and the United States.",
-    technologies: ["C#", ".NET Framework", "WPF", "Winforms"],
+    skills: ["C#", ".NET Framework", "WPF", "Winforms"],
   },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     title: "samcotroneo.com",
     description:

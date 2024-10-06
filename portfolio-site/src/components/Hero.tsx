@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import profilepic from "../assets/ProfilePicture.png";
-import { INTRO_CONTENT } from "../data/Content";
+import { ATTRIBUTES, INTRO_CONTENT } from "../data/Content";
+import Profile from "./common/Profile";
 
 const heroVariants = (delay: number) => ({
   hidden: { x: -100, opacity: 0 },
@@ -21,6 +21,7 @@ const Hero = () => {
             >
               Sam Cotroneo
             </motion.h1>
+            <span className="text-3xl">Hi there! I'm a </span>
             <motion.span
               variants={heroVariants(0.5)}
               initial="hidden"
@@ -29,26 +30,25 @@ const Hero = () => {
             >
               Software Engineer
             </motion.span>
-            <motion.p
+            <span className="text-3xl"> but I also fancy myself a</span>
+            <motion.span
               variants={heroVariants(1)}
               initial="hidden"
               animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter "
+              className="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
             >
-              {INTRO_CONTENT}
-            </motion.p>
+              {ATTRIBUTES[(ATTRIBUTES.length * Math.random()) | 0]}
+            </motion.span>
           </div>
         </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <motion.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              src={profilepic}
-              alt="Profile Picture"
-            />
-          </div>
+        <div className="w-full lg:w-1/2 flex items-center justify-end">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+          >
+            <Profile />
+          </motion.div>
         </div>
       </div>
     </div>
