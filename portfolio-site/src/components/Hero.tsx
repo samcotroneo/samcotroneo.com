@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ATTRIBUTES, INTRO_CONTENT } from "../data/Content";
 import Profile from "./common/Profile";
 
 const heroVariants = (delay: number) => ({
@@ -21,27 +20,18 @@ const Hero = () => {
             >
               Sam Cotroneo
             </motion.h1>
-            <span className="text-3xl">Hi there! I'm a </span>
+            <span className="text-2xl">Hi there! I'm a </span>
             <motion.span
               variants={heroVariants(0.5)}
               initial="hidden"
               animate="visible"
-              className="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="pb-8 bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
             >
               Software Engineer
             </motion.span>
-            <span className="text-3xl"> but I also fancy myself a</span>
-            <motion.span
-              variants={heroVariants(1)}
-              initial="hidden"
-              animate="visible"
-              className="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
-            >
-              {ATTRIBUTES[(ATTRIBUTES.length * Math.random()) | 0]}
-            </motion.span>
           </div>
         </div>
-        <div className="w-full lg:w-1/2 flex items-center justify-end">
+        <div className="w-full lg:w-1/2 flex items-center justify-center">
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}

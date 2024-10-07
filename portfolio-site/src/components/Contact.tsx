@@ -22,10 +22,13 @@ const Contact = () => {
         transition={{ duration: 1 }}
         className="text-center tracking tighter"
       >
-        <p>{CONTACT.description}</p>
-        <a href="#" className="my-4 border-b border-neutral-300">
-          {CONTACT.email}
-        </a>
+        <p>
+          Thanks for stopping by! Feel free to reach out to me via{" "}
+          <a href="#" className="my-4 border-b border-neutral-300">
+            {CONTACT.email}
+          </a>
+          , or connect with me on LinkedIn or GitHub.
+        </p>
         <div className="m-8 flex items-center justify-center gap-4 text-4xl">
           <a href={CONTACT.linkedin} target="_blank">
             <FaLinkedin />

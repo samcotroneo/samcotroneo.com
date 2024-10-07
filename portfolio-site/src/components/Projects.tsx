@@ -13,7 +13,7 @@ const Projects = () => {
         <span className="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
           Projects
         </span>{" "}
-        I've Built
+        I'm Building
       </motion.h2>
       <div>
         {PROJECTS.map((project, index) => (
@@ -25,9 +25,10 @@ const Projects = () => {
               className="w-full lg:w-1/4"
             >
               <img
-                className="rounded-2xl mb-4"
-                src="https://via.placeholder.com/200"
-                alt="About Picture"
+                className="rounded-2xl mb-4 w-40 h-40"
+                style={{ imageRendering: "pixelated" }}
+                src={project.image}
+                alt={project.title}
               />
             </motion.div>
             <motion.div

@@ -2,7 +2,10 @@ import { Experience } from "./Experience";
 import { Project } from "./Projects";
 
 export const ABOUT_CONTENT: string[] = [
-  "I am a versatile software engineer with over 8 years of experience, predominantly with the .NET ecosystem. I pride myself on my soft skills, where empathy, collaboration, communication and a strong willingness to learn, are at the forefront of my work ethic. With experience building a range of applications using the .NET stack, my strength is predominantly on the back end. I enjoy integrating .NET and ASP.NET applications with third party APIs and network protocols, working with databases and leveraging containerisation and cloud technologies. While I am a back end developer at heart, I have a keen interest in front end development and have been working on improving my skills in this area, using Blazor professionally, and learning React in my spare time.",
+  "I am a versatile software engineer with over 8 years of experience, predominantly with the .NET ecosystem.",
+  "I pride myself on my soft skills, where empathy, collaboration, communication and a strong willingness to learn, are at the forefront of my work ethic.",
+  "With experience building a range of applications using the .NET stack, my strength is predominantly on the back end. I enjoy integrating .NET and ASP.NET applications with third party APIs and network protocols, working with databases and leveraging containerisation and cloud technologies.",
+  "While I am a back end developer at heart, I have a keen interest in front end development and have been working on improving my skills in this area, using Blazor professionally, and learning React in my spare time.",
 ];
 
 export const ATTRIBUTES: string[] = [
@@ -44,7 +47,8 @@ export const PROJECTS: Project[] = [
   {
     title: "samcotroneo.com",
     description:
-      "I wanted to broaden my horizons and improve my frontend web development skills, so I built this site using React and Typescript. I also wanted to try out TailwindCSS for styling and I'm really happy with the results.",
+      "My personal website where I can show off my experience, provide a professional point of contact, and develop my front end skills focusing mainly on the React and TailwindCSS libraries.",
+    image: "logo.svg",
     link: "https://samcotroneo.com",
     technologies: [
       "React",
@@ -55,16 +59,18 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "Honeybee Blitz",
+    title: "Honeybee Blitz - In Progress",
     description:
-      "Release Date TBA - Honeybee Blitz is a fast-paced, arcade-style game where you play as a honeybee collecting nectar, tuning it into honey and avoiding obstacles.",
+      "Honeybee Blitz is a fast-paced, arcade-style game where you play as a honeybee collecting nectar, tuning it into honey and avoiding obstacles. The goal of this project is to further my web development expertise by building a game using PhaserJS.",
+    image: "honeybee.png",
     link: "https://samcotroneo.com",
     technologies: ["PhaserJS", "Typescript", "Vite", "Aesprite"],
   },
   {
-    title: "BreadBuddy",
+    title: "BreadBuddy - In Progress",
     description:
-      "Release Date TBA - BreadBuddy is a baking companion app that helps you accurately time and track your bread baking recipe steps, as well as keep track of your sourdough starter.",
+      "BreadBuddy is a baking companion app that helps you accurately time and track your bread baking recipe steps, as well as keep track of your sourdough starter. The goal of this project is to continue learning and building with react, while also getting some exposure to the mobile space.",
+    image: "breadbuddy.png",
     link: "https://samcotroneo.com",
     technologies: ["React Native", "Typescript", "Expo"],
   },
@@ -74,6 +80,6 @@ export const CONTACT = {
   description:
     "Thanks for stopping by! Feel free to reach out to me via the email below, or connect with me on LinkedIn or GitHub.",
   email: "info@samcotroneo.com",
-  linkedin: "https://linkedin.com/in/sam-cotroneo-1255a3a9/",
+  linkedin: "https://linkedin.com/in/samcotroneo",
   github: "https://github.com/samcotroneo",
 };
