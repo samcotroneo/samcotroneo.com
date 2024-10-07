@@ -40,12 +40,12 @@ const Experience = () => {
               </h6>
               <p className="mb-4 text-neutral-400">{experience.description}</p>
               <div className="flex flex-wrap">
-                {experience.technologies.map((technology, index) => (
+                {experience.skills.map((skill, index) => (
                   <span
                     key={index}
                     className="whitespace-nowrap rounded bg-neutral-900 text-purple-500 text-sm font-medium mr-2 mt-2 px-2 py-1"
                   >
-                    {technology}
+                    {skill}
                   </span>
                 ))}
               </div>

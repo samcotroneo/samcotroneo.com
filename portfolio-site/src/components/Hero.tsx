@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Profile from "./common/Profile";
 
 const heroVariants = (delay: number) => ({
   hidden: { x: -100, opacity: 0 },
