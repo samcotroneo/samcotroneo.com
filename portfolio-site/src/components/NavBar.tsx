@@ -1,7 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { CONTACT } from "../data/Content";
-import Logo from "./Logo";
+import Logo from "./common/Logo";
 
 const NavBar = () => {
   return (

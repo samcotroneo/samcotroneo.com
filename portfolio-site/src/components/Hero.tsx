@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import profilepic from "../assets/ProfilePicture.png";
-import { INTRO_CONTENT } from "../data/Content";
+import Profile from "./common/Profile";
 
 const heroVariants = (delay: number) => ({
   hidden: { x: -100, opacity: 0 },
@@ -21,34 +20,25 @@ const Hero = () => {
             >
               Sam Cotroneo
             </motion.h1>
+            <span className="text-2xl">Hi there! I'm a </span>
             <motion.span
               variants={heroVariants(0.5)}
               initial="hidden"
               animate="visible"
-              className="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="pb-8 bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
             >
               Software Engineer
             </motion.span>
-            <motion.p
-              variants={heroVariants(1)}
-              initial="hidden"
-              animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter "
-            >
-              {INTRO_CONTENT}
-            </motion.p>
           </div>
         </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <motion.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              src={profilepic}
-              alt="Profile Picture"
-            />
-          </div>
+        <div className="w-full lg:w-1/2 flex items-center justify-center">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+          >
+            <Profile />
+          </motion.div>
         </div>
       </div>
     </div>
