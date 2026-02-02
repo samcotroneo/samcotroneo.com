@@ -54,7 +54,7 @@ public static class SiteContent
             Description = "Honeybee Blitz is a fast-paced, arcade-style game where you play as a honeybee collecting nectar, tuning it into honey and avoiding obstacles. The goal of this project is to further my web development expertise by building a game using PhaserJS.",
             Image = "honeybee.png",
             Link = "https://samcotroneo.com",
-            Technologies = new List<string> { "PhaserJS", "Typescript", "Vite", "Aesprite" }
+            Technologies = new List<string> { "PhaserJS", "Typescript", "Vite", "Aseprite" }
         },
         new Project
         {
