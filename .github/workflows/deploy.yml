@@ -47,10 +47,19 @@ jobs:
         run: npm install
       - name: Build Tailwind CSS
         run: npm run build:css
-      - name: Create output directory
-        run: mkdir -p wwwroot-static
       - name: Generate static site
         run: dotnet run -- ssg
+      - name: Verify static files were generated
+        run: |
+          if [ -z "$(ls -A wwwroot-static)" ]; then
+            echo "Error: wwwroot-static directory is empty. Static site generation may have failed."
+            echo "Files in current directory:"
+            ls -la
+            exit 1
+          else
+            echo "Static files generated successfully:"
+            find wwwroot-static -type f | head -20
+          fi
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

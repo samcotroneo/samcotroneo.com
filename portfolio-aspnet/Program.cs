@@ -42,11 +42,15 @@ if (exitWhenDone)
     var outputPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot-static");
     Console.WriteLine($"Output path: {outputPath}");
     
-    // Ensure directory exists
-    if (!Directory.Exists(outputPath))
+    // Clean and recreate the output directory to ensure fresh build
+    if (Directory.Exists(outputPath))
     {
-        Directory.CreateDirectory(outputPath);
+        Console.WriteLine("Cleaning existing wwwroot-static directory...");
+        Directory.Delete(outputPath, recursive: true);
     }
+    
+    Console.WriteLine("Creating fresh wwwroot-static directory...");
+    Directory.CreateDirectory(outputPath);
     
     app.GenerateStaticContent(
         destinationRoot: outputPath,
