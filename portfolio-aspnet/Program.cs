@@ -42,6 +42,12 @@ if (exitWhenDone)
     var outputPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot-static");
     Console.WriteLine($"Output path: {outputPath}");
     
+    // Ensure directory exists
+    if (!Directory.Exists(outputPath))
+    {
+        Directory.CreateDirectory(outputPath);
+    }
+    
     app.GenerateStaticContent(
         destinationRoot: outputPath,
         exitWhenDone: true,
