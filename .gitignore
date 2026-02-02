@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# ASP.NET portfolio-aspnet
+portfolio-aspnet/node_modules/
+portfolio-aspnet/package-lock.json
+portfolio-aspnet/wwwroot-static/
