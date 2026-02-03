@@ -39,13 +39,21 @@ var exitWhenDone = args.Contains("--generate-static") || args.Contains("ssg");
 if (exitWhenDone)
 {
     Console.WriteLine("Starting static site generation...");
+
+    if (Directory.Exists("wwwroot-static"))
+    {
+        Directory.Delete("wwwroot-static", true);
+    }
+
+    Directory.CreateDirectory("wwwroot-static");
+
     var outputPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot-static");
     Console.WriteLine($"Output path: {outputPath}");
     
     app.GenerateStaticContent(
         destinationRoot: outputPath,
         exitWhenDone: true,
-        alwaysDefaultFile: false,
+        alwaysDefaultFile: true,
         dontUpdateLinks: false);
     
     Console.WriteLine("Static site generation completed!");
