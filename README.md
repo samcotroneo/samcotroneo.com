@@ -2,7 +2,7 @@
 
 A personal website and portfolio to showcase my skills, offer contact information and more.
 
-Built with **ASP.NET Core 9.0**, **Razor Pages**, and **Tailwind CSS** as a statically generated site.
+Built with **ASP.NET Core 10.0**, **Razor Pages**, and **Tailwind CSS** as a statically generated site.
 
 ## Quick Start
 
@@ -54,7 +54,7 @@ Or use the build script from the root:
 
 ## Technology Stack
 
-- ASP.NET Core 9.0 (Razor Pages)
+- ASP.NET Core 10.0 (Razor Pages)
 - Tailwind CSS 3
 - Custom Static Site Generator using Microsoft.AspNetCore.Mvc.Testing
 

@@ -69,6 +69,6 @@ generator.AddPage("/about");     // Add your new page here
 
 ## Technology Stack
 
-- ASP.NET Core 9.0 (Razor Pages)
+- ASP.NET Core 10.0 (Razor Pages)
 - Tailwind CSS 3
 - Microsoft.AspNetCore.Mvc.Testing (for test server-based static generation)

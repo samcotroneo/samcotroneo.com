@@ -142,7 +142,7 @@ public class StaticSiteGenerator
         // Create destination directory
         Directory.CreateDirectory(destDir);
 
-        // Copy all files
+        // Copy all files asynchronously
         foreach (var file in Directory.GetFiles(sourceDir))
         {
             var fileName = Path.GetFileName(file);
@@ -154,7 +154,9 @@ public class StaticSiteGenerator
                 continue;
             }
             
-            File.Copy(file, destFile, overwrite: true);
+            // Use async file I/O to avoid blocking the thread pool
+            var bytes = await File.ReadAllBytesAsync(file);
+            await File.WriteAllBytesAsync(destFile, bytes);
         }
 
         // Recursively copy subdirectories
