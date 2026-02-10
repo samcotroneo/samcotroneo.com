@@ -93,6 +93,10 @@ public class StaticSiteGenerator
 
         var html = await response.Content.ReadAsStringAsync();
         
+        // Fix ASP.NET Core app-relative paths (~/) for static output
+        // MapStaticAssets uses ~/ prefix which needs to be converted to / for static sites
+        html = html.Replace("~/", "/");
+        
         // Determine output file path
         var outputFilePath = GetOutputFilePath(pagePath);
         var outputDir = Path.GetDirectoryName(outputFilePath);
