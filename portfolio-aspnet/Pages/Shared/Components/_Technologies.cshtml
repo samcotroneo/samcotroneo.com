@@ -1,18 +1,18 @@
 @{
     var technologies = new[]
     {
-        new { Image = "~/assets/technologies/dotnet-svgrepo-com.svg", Alt = ".NET Logo" },
-        new { Image = "~/assets/technologies/blazor-svgrepo-com.svg", Alt = "Blazor Logo" },
-        new { Image = "~/assets/technologies/html-5-svgrepo-com.svg", Alt = "HTML 5 Logo" },
-        new { Image = "~/assets/technologies/css-3-svgrepo-com.svg", Alt = "CSS 3 Logo" },
-        new { Image = "~/assets/technologies/javascript-svgrepo-com.svg", Alt = "Javascript Logo" },
-        new { Image = "~/assets/technologies/node-js-svgrepo-com.svg", Alt = "Node JS Logo" },
-        new { Image = "~/assets/technologies/microsoft-sql-server-logo-svgrepo-com.svg", Alt = "MS SQL Server Logo" },
-        new { Image = "~/assets/technologies/nginx-logo-svgrepo-com.svg", Alt = "Nginx Logo" },
-        new { Image = "~/assets/technologies/docker-svgrepo-com.svg", Alt = "Docker Logo" },
-        new { Image = "~/assets/technologies/azure-svgrepo-com.svg", Alt = "Azure Logo" },
-        new { Image = "~/assets/technologies/microsoft-windows-svgrepo-com.svg", Alt = "Windows Logo" },
-        new { Image = "~/assets/technologies/linux-svgrepo-com.svg", Alt = "Linux Logo" }
+        new { Image = "assets/technologies/dotnet-svgrepo-com.svg", Alt = ".NET Logo" },
+        new { Image = "assets/technologies/blazor-svgrepo-com.svg", Alt = "Blazor Logo" },
+        new { Image = "assets/technologies/html-5-svgrepo-com.svg", Alt = "HTML 5 Logo" },
+        new { Image = "assets/technologies/css-3-svgrepo-com.svg", Alt = "CSS 3 Logo" },
+        new { Image = "assets/technologies/javascript-svgrepo-com.svg", Alt = "Javascript Logo" },
+        new { Image = "assets/technologies/node-js-svgrepo-com.svg", Alt = "Node JS Logo" },
+        new { Image = "assets/technologies/microsoft-sql-server-logo-svgrepo-com.svg", Alt = "MS SQL Server Logo" },
+        new { Image = "assets/technologies/nginx-logo-svgrepo-com.svg", Alt = "Nginx Logo" },
+        new { Image = "assets/technologies/docker-svgrepo-com.svg", Alt = "Docker Logo" },
+        new { Image = "assets/technologies/azure-svgrepo-com.svg", Alt = "Azure Logo" },
+        new { Image = "assets/technologies/microsoft-windows-svgrepo-com.svg", Alt = "Windows Logo" },
+        new { Image = "assets/technologies/linux-svgrepo-com.svg", Alt = "Linux Logo" }
     };
 }
 
@@ -22,12 +22,23 @@
             Technologies
         </span> I Use
     </h2>
-    <div class="flex flex-wrap items-center justify-center gap-4">
-        @foreach (var tech in technologies)
-        {
-            <div class="rounded-2xl border-4 border-neutral-800 p-4">
-                <img src="@tech.Image" alt="@tech.Alt" class="w-16 h-16" />
-            </div>
-        }
+    <div class="tech-marquee" aria-label="Scrolling list of technologies">
+        <div class="tech-marquee__track">
+            @foreach (var tech in technologies)
+            {
+                <div class="tech-marquee__item rounded-2xl border-4 border-neutral-800 p-4">
+                    <img src="@tech.Image" alt="@tech.Alt" class="w-16 h-16" />
+                </div>
+            }
+        </div>
+        <!-- Duplicate track keeps the marquee seamless; the first resets off-screen. -->
+        <div class="tech-marquee__track" aria-hidden="true">
+            @foreach (var tech in technologies)
+            {
+                <div class="tech-marquee__item rounded-2xl border-4 border-neutral-800 p-4">
+                    <img src="@tech.Image" alt="@tech.Alt" class="w-16 h-16" />
+                </div>
+            }
+        </div>
     </div>
 </div>

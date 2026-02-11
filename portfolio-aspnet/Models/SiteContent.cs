@@ -2,9 +2,11 @@ namespace PortfolioSite.Models;
 
 public static class SiteContent
 {
+    public static DateTime CareerStartDate = new DateTime(2016, 12, 6);
+
     public static List<string> AboutContent { get; } = new()
     {
-        "I am a versatile software engineer with over 8 years of experience, predominantly with the .NET ecosystem.",
+        "I am a versatile software engineer with over {years} years of experience, predominantly with the .NET ecosystem.",
         "I pride myself on my soft skills, where empathy, collaboration, communication and a strong willingness to learn, are at the forefront of my work ethic.",
         "With experience building a range of applications using the .NET stack, my strength is predominantly on the back end. I enjoy integrating .NET and ASP.NET applications with third party APIs and network protocols, working with databases and leveraging containerisation and cloud technologies.",
         "While I am a back end developer at heart, I have a keen interest in front end development and have been working on improving my skills in this area, using Blazor professionally, and learning React in my spare time."
@@ -13,8 +15,8 @@ public static class SiteContent
     public static List<string> Attributes { get; } = new()
     {
         "Software Engineer",
-        "Casual Gardener",
-        "Wannabe Baker",
+        "Gardening Enthusiast",
+        "Budding Baker",
         "Level 10 Dwarf Artificer"
     };
 
@@ -22,10 +24,18 @@ public static class SiteContent
     {
         new Experience
         {
+            Role = "Senior Software Developer",
+            Company = "Eziway Salary Packaging",
+            Date = "Feburary 2025 - Present",
+            Description = "As a Senior Software Developer at Eziway I am responsible for maintaining and improving Eziway's salary packaging platform which is used by organisations Australia wide to administer salary packaging, particular in the not for profit sector.",
+            Skills = new List<string> { "C#", ".NET", "ASP.NET", "SQL Server", "Azure" }
+        },
+        new Experience
+        {
             Role = "Senior Software Engineer",
             Company = "Wymac Gaming Solutions",
-            Date = "April 2021 - Present",
-            Description = "As a Senior Software Engineer I am responsible for developing Wymac's next generation Promotion system while maintaining and updating Wymac's existing promotions product which is running in production in Pubs, Clubs and Casinos all across the country.",
+            Date = "April 2021 - Feburary 2025",
+            Description = "As a Senior Software Engineer I was responsible for developing Wymac's next generation Promotion system while maintaining and updating Wymac's existing promotions product which was running in production in Pubs, Clubs and Casinos all across the country.",
             Skills = new List<string> { "C#", ".NET", "ASP.NET", "Blazor", "SQL Server", "NGINX", "Azure", "Docker" }
         },
         new Experience
