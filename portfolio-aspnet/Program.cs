@@ -1,17 +1,9 @@
-using AspNetStatic;
+using PortfolioSite;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
-// Configure AspNetStatic with routes
-builder.Services.AddSingleton<IStaticResourcesInfoProvider>(
-    new StaticResourcesInfoProvider(
-        new[]
-        {
-            new PageResource("/")
-        }));
 
 var app = builder.Build();
 
@@ -35,28 +27,38 @@ app.MapRazorPages()
    .WithStaticAssets();
 
 // Generate static files if requested
-var exitWhenDone = args.Contains("--generate-static") || args.Contains("ssg");
-if (exitWhenDone)
+var generateStatic = args.Contains("--generate-static") || args.Contains("ssg");
+if (generateStatic)
 {
-    Console.WriteLine("Starting static site generation...");
-
-    if (Directory.Exists("wwwroot-static"))
-    {
-        Directory.Delete("wwwroot-static", true);
-    }
-
-    Directory.CreateDirectory("wwwroot-static");
+    Console.WriteLine("=== Static Site Generation ===");
+    Console.WriteLine("Starting custom SSG using test web server to render Razor pages...");
+    Console.WriteLine();
 
     var outputPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot-static");
-    Console.WriteLine($"Output path: {outputPath}");
+    var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+    // Clean output directory
+    if (Directory.Exists(outputPath))
+    {
+        Directory.Delete(outputPath, recursive: true);
+    }
+    Directory.CreateDirectory(outputPath);
+
+    // Create and configure the static site generator
+    var generator = new StaticSiteGenerator(outputPath, wwwrootPath);
     
-    app.GenerateStaticContent(
-        destinationRoot: outputPath,
-        exitWhenDone: true,
-        alwaysDefaultFile: true,
-        dontUpdateLinks: false);
+    // Define all pages to generate (in C# code as requested)
+    generator.AddPage("/");          // Home page (Index.cshtml)
+    generator.AddPage("/Error");     // Error page
     
-    Console.WriteLine("Static site generation completed!");
+    // Generate the static site
+    await generator.GenerateAsync();
+    
+    Console.WriteLine();
+    Console.WriteLine($"✓ Static site generated successfully!");
+    Console.WriteLine($"  Output directory: {outputPath}");
+    Console.WriteLine();
+    
     return;
 }
 
