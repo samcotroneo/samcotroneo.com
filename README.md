@@ -50,7 +50,6 @@ Or use the build script from the root:
   - `wwwroot-static/` - Generated static site (not in git)
   - `Styles/` - Tailwind CSS source
   - `StaticSiteGenerator.cs` - Custom SSG implementation
-- `portfolio-site/` - Legacy React application (for reference)
 
 ## Technology Stack
 
