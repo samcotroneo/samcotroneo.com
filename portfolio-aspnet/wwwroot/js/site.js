@@ -41,9 +41,8 @@ const initFloatingNav = () => {
     return;
   }
 
-  const sections = ['about', 'technologies', 'experience', 'projects', 'contact'];
-  const activeClass = 'bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 text-neutral-900';
-  const inactiveClass = 'text-neutral-300 hover:text-white hover:bg-neutral-800';
+  // Extract section IDs dynamically from nav links
+  const sections = Array.from(navLinks).map(link => link.getAttribute('data-section'));
 
   const updateActiveSection = () => {
     const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -53,16 +52,13 @@ const initFloatingNav = () => {
       if (section && section.offsetTop <= scrollPosition) {
         // Remove active class from all links
         navLinks.forEach(link => {
-          link.classList.remove(...activeClass.split(' '));
-          link.classList.add(...inactiveClass.split(' '));
+          const isCurrentLink = link.getAttribute('data-section') === sections[i];
+          if (isCurrentLink) {
+            link.className = 'floating-nav-link block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 text-neutral-900';
+          } else {
+            link.className = 'floating-nav-link block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-neutral-300 hover:text-white hover:bg-neutral-800';
+          }
         });
-
-        // Add active class to current section link
-        const activeLink = document.querySelector(`[data-section="${sections[i]}"]`);
-        if (activeLink) {
-          activeLink.classList.remove(...inactiveClass.split(' '));
-          activeLink.classList.add(...activeClass.split(' '));
-        }
         break;
       }
     }
