@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import NavBar from "./components/NavBar";
 import Projects from "./components/Projects";
 import Technologies from "./components/Technologies";
+import FloatingNav from "./components/FloatingNav";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </div>
       <div className="container px-8 lg:px-32">
         <NavBar />
+        <FloatingNav />
         <Hero />
         <About />
         <Technologies />
