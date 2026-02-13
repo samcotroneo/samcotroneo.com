@@ -7,3 +7,18 @@
 :root {
   font-family: "Inter", sans-serif;
 }
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle infinite ease-in-out;
+}
