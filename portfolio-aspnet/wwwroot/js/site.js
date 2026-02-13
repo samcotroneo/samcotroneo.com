@@ -43,6 +43,11 @@ const initFloatingNav = () => {
 
   // Extract section IDs dynamically from nav links
   const sections = Array.from(navLinks).map(link => link.getAttribute('data-section'));
+  
+  // Define CSS classes for active and inactive states
+  const baseClasses = 'floating-nav-link block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200';
+  const activeClasses = `${baseClasses} bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 text-neutral-900`;
+  const inactiveClasses = `${baseClasses} text-neutral-300 hover:text-white hover:bg-neutral-800`;
 
   const updateActiveSection = () => {
     const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -50,14 +55,10 @@ const initFloatingNav = () => {
     for (let i = sections.length - 1; i >= 0; i--) {
       const section = document.getElementById(sections[i]);
       if (section && section.offsetTop <= scrollPosition) {
-        // Remove active class from all links
+        // Update all links based on active section
         navLinks.forEach(link => {
           const isCurrentLink = link.getAttribute('data-section') === sections[i];
-          if (isCurrentLink) {
-            link.className = 'floating-nav-link block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 text-neutral-900';
-          } else {
-            link.className = 'floating-nav-link block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-neutral-300 hover:text-white hover:bg-neutral-800';
-          }
+          link.className = isCurrentLink ? activeClasses : inactiveClasses;
         });
         break;
       }
