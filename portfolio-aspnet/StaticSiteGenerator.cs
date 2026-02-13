@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +12,9 @@ namespace PortfolioSite;
 /// </summary>
 public class StaticSiteGenerator
 {
+    private static readonly Regex RootRelativeAttributeRegex = new(
+        @"(?<attr>\b(?:href|src|action))=(?<quote>[""'])/(?!/)(?<path>[^""']*)",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private readonly string _outputPath;
     private readonly string _wwwrootPath;
     private readonly List<string> _pagesToGenerate;
@@ -96,6 +101,9 @@ public class StaticSiteGenerator
         // Fix ASP.NET Core app-relative paths (~/) for static output
         // MapStaticAssets uses ~/ prefix which needs to be converted to / for static sites
         html = html.Replace("~/", "/");
+
+        // Convert root-relative URLs (e.g., /css/site.css) to page-relative URLs
+        html = RewriteRootRelativeUrls(html, pagePath);
         
         // Determine output file path
         var outputFilePath = GetOutputFilePath(pagePath);
@@ -124,6 +132,38 @@ public class StaticSiteGenerator
 
         var cleanPath = pagePath.TrimStart('/');
         return Path.Combine(_outputPath, cleanPath, "index.html");
+    }
+
+    private static string RewriteRootRelativeUrls(string html, string pagePath)
+    {
+        var depth = GetPathDepth(pagePath);
+        var prefix = depth == 0 ? string.Empty : string.Concat(Enumerable.Repeat("../", depth));
+
+        return RootRelativeAttributeRegex.Replace(html, match =>
+        {
+            var attr = match.Groups["attr"].Value;
+            var quote = match.Groups["quote"].Value;
+            var path = match.Groups["path"].Value;
+
+            var newPath = path.Length == 0
+                ? (prefix.Length == 0 ? "./" : prefix)
+                : $"{prefix}{path}";
+
+            return $"{attr}={quote}{newPath}";
+        });
+    }
+
+    private static int GetPathDepth(string pagePath)
+    {
+        if (pagePath == "/")
+        {
+            return 0;
+        }
+
+        var cleanPath = pagePath.Trim('/');
+        return cleanPath.Length == 0
+            ? 0
+            : cleanPath.Split('/', StringSplitOptions.RemoveEmptyEntries).Length;
     }
 
     private async Task CopyStaticAssetsAsync()
