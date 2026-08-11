@@ -1,39 +1,419 @@
-@using System.Text.Json
 @using PortfolioSite.Models
-
 @{
-    var attributes = SiteContent.Attributes;
-    var attributesJson = JsonSerializer.Serialize(attributes);
-    var initialAttribute = attributes.Count > 0 ? attributes[0] : "Software Engineer";
+    var kitchen = SiteContent.Worlds.First(w => w.Slug == "kitchen");
+    var control = SiteContent.Worlds.First(w => w.Slug == "control-room");
+    var arcade = SiteContent.Worlds.First(w => w.Slug == "arcade");
 }
 
-<div class="border-b border-neutral-700 lg:mb-35">
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
-            <div class="flex flex-col items-center lg:items-start">
-                <h1 class="pb-8 text-5xl font-thin tracking-tight lg:mt-16 lg:text-8xl">
-                    Sam Cotroneo
-                </h1>
-                <span class="text-2xl text-center lg:text-left">Hi there! I'm a </span>
-                <span class="hero-attribute pb-24 lg:pb-16 text-3xl tracking-tight text-center lg:self-start" data-attributes='@Html.Raw(attributesJson)' data-interval="3200" aria-live="polite">
-                    <span class="hero-attribute__card">
-                        <span class="hero-attribute__face hero-attribute__face--front justify-center lg:justify-start bg-gradient-to-r bg-clip-text text-transparent">
-                            @initialAttribute
-                        </span>
-                        <span class="hero-attribute__face hero-attribute__face--back justify-center lg:justify-start bg-gradient-to-r bg-clip-text text-transparent">
-                            @initialAttribute
-                        </span>
-                    </span>
-                </span>
-                <span class="hidden from-pink-300 via-slate-500 to-purple-500 from-sky-300 via-emerald-300 to-cyan-400 from-amber-300 via-orange-400 to-red-500 from-violet-300 via-fuchsia-400 to-green-400 from-red-500 via-slate-300 to-rose-400"></span>
-            </div>
+<section id="top" class="relative flex min-h-svh flex-col items-center justify-center overflow-hidden pb-28 pt-6 sm:pt-8" aria-label="Introduction">
+    <div class="scene-wrapper relative w-full max-w-6xl aspect-[3/4] sm:aspect-[4/3] px-4">
+        <!-- Desktop room scene -->
+        <svg class="pointer-events-none absolute inset-0 h-full w-full hidden sm:block" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="d-wallGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2c273f" />
+                    <stop offset="55%" stop-color="#211d30" />
+                    <stop offset="100%" stop-color="#161323" />
+                </linearGradient>
+                <radialGradient id="d-cornerShadow" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0.55" />
+                </radialGradient>
+                <filter id="d-wallTexture" x="0" y="0" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4" stitchTiles="stitch" />
+                    <feColorMatrix type="saturate" values="0" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.28" />
+                    </feComponentTransfer>
+                </filter>
+
+                <linearGradient id="d-woodTop" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6b4d3d" />
+                    <stop offset="15%" stop-color="#5d4030" />
+                    <stop offset="100%" stop-color="#4a3428" />
+                </linearGradient>
+                <linearGradient id="d-woodFront" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3d2a21" />
+                    <stop offset="100%" stop-color="#2a1c16" />
+                </linearGradient>
+                <linearGradient id="d-woodLeg" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#3d2a21" />
+                    <stop offset="40%" stop-color="#4f3529" />
+                    <stop offset="100%" stop-color="#2a1c16" />
+                </linearGradient>
+                <filter id="d-woodGrain" x="0" y="0" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.08 0.006" numOctaves="3" result="grain" />
+                    <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.25 0" />
+                    <feBlend in="SourceGraphic" mode="overlay" />
+                </filter>
+
+                <linearGradient id="d-lampShade" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f4d794" />
+                    <stop offset="100%" stop-color="#e9c46a" />
+                </linearGradient>
+                <linearGradient id="d-lampBeam" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f4a261" stop-opacity="0.34" />
+                    <stop offset="60%" stop-color="#f4a261" stop-opacity="0.10" />
+                    <stop offset="100%" stop-color="#f4a261" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="d-lampGlow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="#f4a261" stop-opacity="0.42" />
+                    <stop offset="100%" stop-color="#f4a261" stop-opacity="0" />
+                </radialGradient>
+
+                <linearGradient id="d-crtBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2a2639" />
+                    <stop offset="50%" stop-color="#181520" />
+                    <stop offset="100%" stop-color="#0d0c12" />
+                </linearGradient>
+                <linearGradient id="d-crtBezelShine" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10" />
+                    <stop offset="8%" stop-color="#ffffff" stop-opacity="0.02" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="d-crtScreen" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="0%" stop-color="#12101a" />
+                    <stop offset="100%" stop-color="#07060a" />
+                </radialGradient>
+                <radialGradient id="d-screenVignette" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="55%" stop-color="#000000" stop-opacity="0" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0.60" />
+                </radialGradient>
+                <pattern id="d-scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+                    <rect width="4" height="1" fill="#ffffff" opacity="0.03" />
+                </pattern>
+
+                <filter id="d-dustBlur">
+                    <feGaussianBlur stdDeviation="0.8" />
+                </filter>
+            </defs>
+
+            <rect x="0" y="0" width="1200" height="900" fill="url(#d-wallGrad)" />
+            <rect x="0" y="0" width="1200" height="900" fill="#050408" opacity="0.35" filter="url(#d-wallTexture)" />
+            <rect x="0" y="0" width="1200" height="900" fill="url(#d-cornerShadow)" opacity="0.6" />
+
+            <g>
+                <rect x="125" y="55" width="240" height="240" rx="2" fill="#0b0a10" stroke="#2d2844" stroke-width="7" />
+                <line x1="245" y1="55" x2="245" y2="295" stroke="#2d2844" stroke-width="6" />
+                <line x1="125" y1="175" x2="365" y2="175" stroke="#2d2844" stroke-width="6" />
+                <g fill="#ffffff" opacity="0.85">
+                    <circle cx="165" cy="100" r="1.4" />
+                    <circle cx="205" cy="78" r="1" />
+                    <circle cx="260" cy="120" r="1.3" />
+                    <circle cx="305" cy="70" r="1" />
+                    <circle cx="340" cy="150" r="1.4" />
+                    <circle cx="150" cy="195" r="1" />
+                    <circle cx="290" cy="215" r="1.3" />
+                    <circle cx="225" cy="235" r="1" />
+                    <circle cx="355" cy="250" r="1.1" />
+                    <circle cx="190" cy="145" r="1" />
+                    <circle cx="325" cy="108" r="1.2" />
+                    <circle cx="140" cy="260" r="0.9" />
+                    <circle cx="270" cy="170" r="0.9" />
+                    <circle cx="320" cy="250" r="0.9" />
+                    <circle cx="235" cy="95" r="0.8" />
+                    <circle cx="175" cy="250" r="0.8" />
+                    <circle cx="345" cy="90" r="0.8" />
+                    <circle cx="290" cy="190" r="0.8" />
+                </g>
+            </g>
+
+            <g>
+                <rect x="920" y="90" width="130" height="220" rx="1" fill="none" stroke="#d1d5db" stroke-width="3" />
+                <rect x="935" y="110" width="100" height="80" fill="#e63946" />
+                <rect x="935" y="210" width="100" height="2" fill="#9ca3af" />
+                <rect x="935" y="225" width="100" height="2" fill="#9ca3af" />
+                <rect x="935" y="240" width="100" height="2" fill="#9ca3af" />
+                <rect x="935" y="255" width="100" height="2" fill="#9ca3af" />
+                <rect x="935" y="270" width="100" height="2" fill="#9ca3af" />
+                <rect x="935" y="285" width="100" height="2" fill="#9ca3af" />
+            </g>
+
+            <ellipse cx="320" cy="340" rx="210" ry="180" fill="url(#d-lampGlow)" opacity="0.55" />
+
+            <g filter="url(#d-woodGrain)">
+                <polygon points="100,518 1100,518 1100,548 100,548" fill="url(#d-woodTop)" />
+                <rect x="100" y="548" width="1000" height="18" fill="url(#d-woodFront)" />
+                <polygon points="165,566 199,566 189,820 175,820" fill="url(#d-woodLeg)" />
+                <polygon points="1001,566 1035,566 1025,820 1011,820" fill="url(#d-woodLeg)" />
+            </g>
+            <polygon points="100,548 1100,548 1100,566 100,566" fill="#000000" opacity="0.25" />
+
+            <g>
+                <rect x="305" y="468" width="38" height="46" rx="3" fill="#d1d5db" />
+                <path d="M343 476 a8 8 0 0 1 0 30" stroke="#d1d5db" stroke-width="5" fill="none" />
+                <ellipse cx="324" cy="468" rx="19" ry="4" fill="#bfc4cc" />
+            </g>
+
+            <g>
+                <ellipse cx="268" cy="514" rx="42" ry="10" fill="#4a3b32" />
+                <rect x="242" y="500" width="52" height="16" rx="3" fill="#5c4a3d" />
+                <circle cx="268" cy="480" r="7" fill="#6b5a4a" />
+                <path d="M268 480 L258 380" stroke="#6b5a4a" stroke-width="9" stroke-linecap="round" />
+                <circle cx="258" cy="380" r="6" fill="#6b5a4a" />
+                <path d="M258 380 L315 305" stroke="#6b5a4a" stroke-width="7" stroke-linecap="round" />
+                <circle cx="315" cy="305" r="5" fill="#6b5a4a" />
+                <path d="M292 300 L342 300 L330 240 L304 240 Z" fill="url(#d-lampShade)" />
+                <ellipse cx="317" cy="240" rx="23" ry="6" fill="#f4a261" />
+                <path d="M317 245 L420 540 L210 540 Z" fill="url(#d-lampBeam)" opacity="0.45" />
+            </g>
+
+            <g>
+                <rect x="895" y="478" width="95" height="12" fill="#457b9d" />
+                <rect x="895" y="482" width="95" height="4" fill="#ffffff" opacity="0.15" />
+                <rect x="905" y="464" width="85" height="14" fill="#e63946" />
+                <rect x="905" y="468" width="85" height="4" fill="#ffffff" opacity="0.15" />
+                <rect x="915" y="448" width="75" height="16" fill="#6a994e" />
+                <rect x="915" y="452" width="75" height="4" fill="#ffffff" opacity="0.15" />
+            </g>
+
+            <g>
+                <rect x="712" y="520" width="56" height="44" rx="2" fill="#0d0c12" />
+                <path d="M712 520 h56 v8 h-56 z" fill="#ffffff" opacity="0.06" />
+                <rect x="675" y="564" width="130" height="14" rx="4" fill="#0d0c12" />
+                <ellipse cx="740" cy="578" rx="65" ry="5" fill="#000000" opacity="0.35" />
+            </g>
+
+            <g pointer-events="auto">
+                <rect x="512" y="226" width="456" height="308" rx="22" fill="url(#d-crtBody)" />
+                <rect x="512" y="226" width="456" height="308" rx="22" fill="url(#d-crtBezelShine)" />
+                <rect x="512" y="226" width="456" height="308" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2" />
+                <rect x="555" y="275" width="370" height="220" rx="6" fill="url(#d-crtScreen)" />
+                <rect x="555" y="275" width="370" height="220" rx="6" fill="url(#d-scanlines)" opacity="0.5" />
+                <rect x="555" y="275" width="370" height="220" rx="6" fill="url(#d-screenVignette)" />
+                <foreignObject x="555" y="275" width="370" height="220" pointer-events="auto">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="flex h-full w-full flex-col items-center justify-center gap-2 sm:gap-3">
+                        <p class="font-mono text-[11px] uppercase tracking-widest text-crt">Projects</p>
+                        <div class="flex items-end gap-3 sm:gap-4">
+                            <button type="button"
+                                    class="world-window group flex flex-col items-center gap-1 outline-none"
+                                    data-world="@kitchen.Slug"
+                                    data-color="@kitchen.Color"
+                                    onclick="document.getElementById('world-@kitchen.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-12 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-white sm:w-14" style="background-color:@kitchen.Color"></span>
+                                <span class="font-mono text-xs uppercase tracking-wide" style="color:@kitchen.Color">@kitchen.Name</span>
+                                <span class="h-px w-6 bg-current opacity-60" style="color:@kitchen.Color"></span>
+                            </button>
+                            <button type="button"
+                                    class="world-window group flex flex-col items-center gap-1 outline-none"
+                                    data-world="@control.Slug"
+                                    data-color="@control.Color"
+                                    onclick="document.getElementById('world-@control.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-12 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-white sm:w-14" style="background-color:@control.Color"></span>
+                                <span class="font-mono text-xs uppercase tracking-wide" style="color:@control.Color">Control</span>
+                                <span class="h-px w-6 bg-current opacity-60" style="color:@control.Color"></span>
+                            </button>
+                            <button type="button"
+                                    class="world-window group flex flex-col items-center gap-1 outline-none"
+                                    data-world="@arcade.Slug"
+                                    data-color="@arcade.Color"
+                                    onclick="document.getElementById('world-@arcade.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-12 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-white sm:w-14" style="background-color:@arcade.Color"></span>
+                                <span class="font-mono text-xs uppercase tracking-wide" style="color:@arcade.Color">@arcade.Name</span>
+                                <span class="h-px w-6 bg-current opacity-60" style="color:@arcade.Color"></span>
+                            </button>
+                        </div>
+                    </div>
+                </foreignObject>
+            </g>
+
+            <g fill="#f4a261" opacity="0.35" filter="url(#d-dustBlur)">
+                <circle cx="380" cy="390" r="1.5" />
+                <circle cx="430" cy="320" r="1" />
+                <circle cx="520" cy="420" r="1.2" />
+                <circle cx="290" cy="280" r="0.9" />
+                <circle cx="620" cy="220" r="1" />
+            </g>
+        </svg>
+
+        <!-- Mobile room scene -->
+        <svg class="pointer-events-none absolute inset-0 h-full w-full sm:hidden" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="m-wallGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2c273f" />
+                    <stop offset="55%" stop-color="#211d30" />
+                    <stop offset="100%" stop-color="#161323" />
+                </linearGradient>
+                <radialGradient id="m-cornerShadow" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0.55" />
+                </radialGradient>
+                <filter id="m-wallTexture" x="0" y="0" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4" stitchTiles="stitch" />
+                    <feColorMatrix type="saturate" values="0" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.28" />
+                    </feComponentTransfer>
+                </filter>
+
+                <linearGradient id="m-woodTop" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6b4d3d" />
+                    <stop offset="15%" stop-color="#5d4030" />
+                    <stop offset="100%" stop-color="#4a3428" />
+                </linearGradient>
+                <linearGradient id="m-woodFront" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3d2a21" />
+                    <stop offset="100%" stop-color="#2a1c16" />
+                </linearGradient>
+                <filter id="m-woodGrain" x="0" y="0" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.08 0.006" numOctaves="3" result="grain" />
+                    <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.25 0" />
+                    <feBlend in="SourceGraphic" mode="overlay" />
+                </filter>
+
+                <linearGradient id="m-lampShade" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f4d794" />
+                    <stop offset="100%" stop-color="#e9c46a" />
+                </linearGradient>
+                <linearGradient id="m-lampBeam" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f4a261" stop-opacity="0.34" />
+                    <stop offset="60%" stop-color="#f4a261" stop-opacity="0.10" />
+                    <stop offset="100%" stop-color="#f4a261" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="m-lampGlow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="#f4a261" stop-opacity="0.42" />
+                    <stop offset="100%" stop-color="#f4a261" stop-opacity="0" />
+                </radialGradient>
+
+                <linearGradient id="m-crtBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2a2639" />
+                    <stop offset="50%" stop-color="#181520" />
+                    <stop offset="100%" stop-color="#0d0c12" />
+                </linearGradient>
+                <linearGradient id="m-crtBezelShine" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10" />
+                    <stop offset="8%" stop-color="#ffffff" stop-opacity="0.02" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="m-crtScreen" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="0%" stop-color="#12101a" />
+                    <stop offset="100%" stop-color="#07060a" />
+                </radialGradient>
+                <radialGradient id="m-screenVignette" cx="0.5" cy="0.5" r="0.7">
+                    <stop offset="55%" stop-color="#000000" stop-opacity="0" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0.60" />
+                </radialGradient>
+                <pattern id="m-scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+                    <rect width="4" height="1" fill="#ffffff" opacity="0.03" />
+                </pattern>
+
+                <filter id="m-dustBlur">
+                    <feGaussianBlur stdDeviation="0.8" />
+                </filter>
+            </defs>
+
+            <rect x="0" y="0" width="900" height="1200" fill="url(#m-wallGrad)" />
+            <rect x="0" y="0" width="900" height="1200" fill="#050408" opacity="0.35" filter="url(#m-wallTexture)" />
+            <rect x="0" y="0" width="900" height="1200" fill="url(#m-cornerShadow)" opacity="0.6" />
+
+            <g>
+                <rect x="80" y="80" width="160" height="160" rx="2" fill="#0b0a10" stroke="#2d2844" stroke-width="6" />
+                <line x1="160" y1="80" x2="160" y2="240" stroke="#2d2844" stroke-width="5" />
+                <line x1="80" y1="160" x2="240" y2="160" stroke="#2d2844" stroke-width="5" />
+                <g fill="#ffffff" opacity="0.85">
+                    <circle cx="110" cy="115" r="1.2" />
+                    <circle cx="145" cy="100" r="0.9" />
+                    <circle cx="185" cy="135" r="1.1" />
+                    <circle cx="210" cy="95" r="0.8" />
+                    <circle cx="100" cy="185" r="0.8" />
+                    <circle cx="170" cy="195" r="1" />
+                    <circle cx="200" cy="175" r="0.9" />
+                    <circle cx="135" cy="210" r="0.7" />
+                </g>
+            </g>
+
+            <ellipse cx="240" cy="300" rx="160" ry="140" fill="url(#m-lampGlow)" opacity="0.55" />
+
+            <g filter="url(#m-woodGrain)">
+                <polygon points="50,820 850,820 850,850 50,850" fill="url(#m-woodTop)" />
+                <rect x="50" y="850" width="800" height="16" fill="url(#m-woodFront)" />
+            </g>
+            <polygon points="50,850 850,850 850,866 50,866" fill="#000000" opacity="0.25" />
+
+            <g>
+                <rect x="130" y="774" width="32" height="40" rx="3" fill="#d1d5db" />
+                <path d="M162 780 a6 6 0 0 1 0 26" stroke="#d1d5db" stroke-width="4" fill="none" />
+                <ellipse cx="146" cy="774" rx="16" ry="3" fill="#bfc4cc" />
+            </g>
+
+            <g>
+                <ellipse cx="210" cy="820" rx="36" ry="8" fill="#4a3b32" />
+                <rect x="188" y="808" width="44" height="14" rx="3" fill="#5c4a3d" />
+                <circle cx="210" cy="790" r="6" fill="#6b5a4a" />
+                <path d="M210 790 L202 710" stroke="#6b5a4a" stroke-width="8" stroke-linecap="round" />
+                <circle cx="202" cy="710" r="5" fill="#6b5a4a" />
+                <path d="M202 710 L248 650" stroke="#6b5a4a" stroke-width="6" stroke-linecap="round" />
+                <circle cx="248" cy="650" r="4" fill="#6b5a4a" />
+                <path d="M228 646 L270 646 L260 596 L238 596 Z" fill="url(#m-lampShade)" />
+                <ellipse cx="249" cy="596" rx="20" ry="5" fill="#f4a261" />
+                <path d="M249 600 L330 830 L170 830 Z" fill="url(#m-lampBeam)" opacity="0.45" />
+            </g>
+
+            <g pointer-events="auto">
+                <rect x="120" y="270" width="660" height="520" rx="28" fill="url(#m-crtBody)" />
+                <rect x="120" y="270" width="660" height="520" rx="28" fill="url(#m-crtBezelShine)" />
+                <rect x="120" y="270" width="660" height="520" rx="28" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2" />
+                <rect x="170" y="340" width="560" height="400" rx="8" fill="url(#m-crtScreen)" />
+                <rect x="170" y="340" width="560" height="400" rx="8" fill="url(#m-scanlines)" opacity="0.5" />
+                <rect x="170" y="340" width="560" height="400" rx="8" fill="url(#m-screenVignette)" />
+                <foreignObject x="170" y="340" width="560" height="400" pointer-events="auto">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+                        <p class="font-mono text-sm uppercase tracking-widest text-crt">Projects</p>
+                        <div class="flex w-full flex-col items-stretch gap-3">
+                            <button type="button"
+                                    class="world-window group flex items-center gap-4 rounded bg-white/5 p-3 outline-none transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white"
+                                    data-world="@kitchen.Slug"
+                                    data-color="@kitchen.Color"
+                                    onclick="document.getElementById('world-@kitchen.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-16 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1" style="background-color:@kitchen.Color"></span>
+                                <span class="font-mono text-base uppercase tracking-wide" style="color:@kitchen.Color">@kitchen.Name</span>
+                            </button>
+                            <button type="button"
+                                    class="world-window group flex items-center gap-4 rounded bg-white/5 p-3 outline-none transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white"
+                                    data-world="@control.Slug"
+                                    data-color="@control.Color"
+                                    onclick="document.getElementById('world-@control.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-16 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1" style="background-color:@control.Color"></span>
+                                <span class="font-mono text-base uppercase tracking-wide" style="color:@control.Color">Control</span>
+                            </button>
+                            <button type="button"
+                                    class="world-window group flex items-center gap-4 rounded bg-white/5 p-3 outline-none transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white"
+                                    data-world="@arcade.Slug"
+                                    data-color="@arcade.Color"
+                                    onclick="document.getElementById('world-@arcade.Slug').scrollIntoView({behavior:'smooth',block:'start'})">
+                                <span class="flex aspect-square w-16 border border-white/25 shadow-sm transition-transform group-hover:-translate-y-1" style="background-color:@arcade.Color"></span>
+                                <span class="font-mono text-base uppercase tracking-wide" style="color:@arcade.Color">@arcade.Name</span>
+                            </button>
+                        </div>
+                    </div>
+                </foreignObject>
+            </g>
+
+            <g fill="#f4a261" opacity="0.35" filter="url(#m-dustBlur)">
+                <circle cx="280" cy="380" r="1.5" />
+                <circle cx="330" cy="320" r="1" />
+                <circle cx="420" cy="430" r="1.2" />
+                <circle cx="220" cy="290" r="0.9" />
+                <circle cx="500" cy="240" r="1" />
+            </g>
+        </svg>
+
+        <!-- Title / tagline -->
+        <div class="pointer-events-none absolute bottom-[18%] sm:bottom-[12%] left-1/2 z-10 w-full -translate-x-1/2 text-center">
+            <h1 class="font-hero text-2xl font-medium uppercase tracking-[0.04em] text-copper sm:text-4xl md:text-5xl">
+                Sam Cotroneo
+            </h1>
+            <p class="mt-2 font-display text-[11px] uppercase tracking-[0.16em] text-crt/70 sm:text-xs">
+                Coder Den · Pick a Project
+            </p>
         </div>
-        <div class="w-full lg:w-1/2 flex items-center justify-center">
-            <div class="relative size-80 lg:size-96">
-                <div class="hero-glow" aria-hidden="true"></div>
-                <div class="hero-sparkles" aria-hidden="true"></div>
-                <img src="~/assets/ProfilePicture.png" alt="Profile Picture" class="absolute top-0 left-0 z-10" />
-            </div>
+
+        <!-- Scroll hint -->
+        <div class="absolute bottom-[5%] left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 opacity-60">
+            <span class="font-display text-[10px] uppercase tracking-[0.2em] text-crt/80">Scroll</span>
+            <svg class="h-4 w-4 animate-float text-crt/80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
         </div>
     </div>
-</div>
+</section>

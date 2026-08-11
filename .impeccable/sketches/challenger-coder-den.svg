@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#1f1c2c"/>
+  
+  <!-- Wall -->
+  <rect x="0" y="0" width="800" height="400" fill="#262236"/>
+  <rect x="0" y="400" width="800" height="200" fill="#3a3447"/>
+  
+  <!-- Window with night -->
+  <rect x="100" y="80" width="160" height="200" fill="#141321"/>
+  <rect x="110" y="90" width="140" height="180" fill="#0d0d18"/>
+  <line x1="180" y1="90" x2="180" y2="270" stroke="#262236" stroke-width="6"/>
+  <line x1="110" y1="180" x2="250" y2="180" stroke="#262236" stroke-width="6"/>
+  
+  <!-- Desk -->
+  <rect x="320" y="360" width="360" height="20" fill="#5d4037"/>
+  <rect x="340" y="380" width="40" height="140" fill="#4e342e"/>
+  <rect x="620" y="380" width="40" height="140" fill="#4e342e"/>
+  
+  <!-- Monitor -->
+  <rect x="440" y="240" width="160" height="120" rx="8" fill="#2a2a2a"/>
+  <rect x="450" y="250" width="140" height="100" rx="4" fill="#1a1a1a"/>
+  
+  <!-- Monitor glow -->
+  <ellipse cx="520" cy="300" rx="140" ry="90" fill="#2a9d8f" opacity="0.15"/>
+  
+  <!-- Window icons -->
+  <rect x="465" y="270" width="35" height="25" rx="2" fill="#f4a261"/>
+  <rect x="508" y="270" width="35" height="25" rx="2" fill="#2a9d8f"/>
+  <rect x="551" y="270" width="35" height="25" rx="2" fill="#e9c46a"/>
+  
+  <!-- Lamp -->
+  <path d="M300,360 L320,280 L360,280 L340,360 Z" fill="#e9c46a"/>
+  <ellipse cx="340" cy="280" rx="40" ry="20" fill="#f4a261"/>
+  <ellipse cx="340" cy="340" rx="120" ry="80" fill="#f4a261" opacity="0.12"/>
+  
+  <!-- Poster -->
+  <rect x="620" y="100" width="80" height="110" fill="#3d3447"/>
+  <rect x="630" y="110" width="60" height="40" fill="#e63946"/>
+  <rect x="630" y="158" width="60" height="6" fill="#f1faee"/>
+  <rect x="630" y="170" width="40" height="4" fill="#a8dadc"/>
+  <rect x="630" y="180" width="50" height="4" fill="#a8dadc"/>
+  
+  <!-- Title -->
+  <text x="400" y="540" text-anchor="middle" font-family="monospace" font-size="24" fill="#f4a261">SAM COTRONEO</text>
+  <text x="400" y="570" text-anchor="middle" font-family="monospace" font-size="12" fill="#a8dadc">CODER DEN · PICK A WINDOW</text>
+</svg>

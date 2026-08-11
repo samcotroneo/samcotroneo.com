@@ -1,22 +1,23 @@
 @using PortfolioSite.Models
 
-<div class="border-b border-neutral-700 pb-24">
-    <h2 class="mt-10 mb-6 text-center text-4xl">
-        <span class="bg-gradient-to-r from-pink-300 via bg-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
-            About
-        </span> Me
-    </h2>
-    <div class="flex flex-wrap">
-        <div class="mx-auto">
-            @foreach (var content in SiteContent.AboutContent)
-            {
-                var yearsText = $"{(DateTime.Now - SiteContent.CareerStartDate).TotalDays / 365:F0}";
-                var yearsSpan = $"<span class=\"js-experience-years\" data-start=\"{SiteContent.CareerStartDate:yyyy-MM-dd}\">{yearsText}</span>";
-                var renderedContent = content.Replace("{years}", yearsSpan);
-                <p class="my-2 max-w-xl py-2 text-center tracking-tight">
-                    @Html.Raw(renderedContent)
-                </p>
-            }
+<section id="about" class="py-24" aria-labelledby="about-heading">
+    <div class="mx-auto max-w-3xl">
+        <div class="relative room-panel p-8 sm:p-10">
+            <div class="absolute -top-3 left-8 h-6 w-20 -rotate-3 bg-lamp/80" aria-hidden="true"></div>
+            <div class="absolute -top-3 right-12 h-6 w-16 rotate-2 bg-crt/80" aria-hidden="true"></div>
+
+            <h2 id="about-heading" class="mb-6 font-display text-4xl font-semibold text-neutral-100">About me</h2>
+            <div class="space-y-4 text-lg leading-relaxed text-neutral-300">
+                @foreach (var content in SiteContent.AboutContent)
+                {
+                    var yearsText = $"{(DateTime.Now - SiteContent.CareerStartDate).TotalDays / 365:F0}";
+                    var yearsSpan = $"<span class=\"js-experience-years font-mono text-lamp\" data-start=\"{SiteContent.CareerStartDate:yyyy-MM-dd}\">{yearsText}</span>";
+                    var renderedContent = content.Replace("{years}", yearsSpan);
+                    <p>
+                        @Html.Raw(renderedContent)
+                    </p>
+                }
+            </div>
         </div>
     </div>
-</div>
+</section>

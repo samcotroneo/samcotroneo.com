@@ -5,14 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="~/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sam Cotroneo | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,1000&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <div class="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-        <div class="fixed top-0 -z-10 h-full w-full">
-            <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-        </div>
-        <div class="container px-8 lg:px-32">
+<body class="bg-den-wall text-neutral-200 antialiased selection:bg-amber selection:text-den-wall">
+    <!--
+    DIRECTION CONTRACT — Cozy Bedroom Coder Den
+    THESIS: Replace the generic portfolio scroll with a single spatial scene; the visitor is inside a 90s bedroom coder den, the desk and CRT are the hub, and each world is a project open on the monitor. The category default—name, tagline, project grid—stays out of the first viewport.
+    OWN-WORLD: Dark violet wall (#1f1c2c) lit by a warm desk lamp (#f4a261) and CRT phosphor (#2a9d8f, #e9c46a). Chakra Petch display, DM Sans body, JetBrains Mono code labels. Materials: matte desk, CRT bezel, sticky notes, corkboard edges.
+    STORY: The visitor sees the room, reads the name, notices three glowing windows on the CRT. Hover previews a world's color and proof; click scrolls to that world's shelf. About and history live on the wall as desk clutter. Contact is a note by the keyboard.
+    FIRST VIEWPORT: Full-height room. Center: desk with CRT showing three window icons/worlds. Warm lamp light from the left. Below the desk: name and tagline. Bottom: scroll hint. Navigation floats as a minimal shelf.
+    FORM: Cozy Bedroom Coder Den (catalog challenger), third on the shortlist, chosen over Indie Game Overworld Map and Handheld Console Menu. Staging: desk-and-CRT hub inside a dim bedroom.
+    -->
+    <div class="room-glow" aria-hidden="true"></div>
+    <div class="relative z-10">
+        <partial name="Shared/Components/_NavShelf" />
+        <div class="container mx-auto px-6 lg:px-12">
             @RenderBody()
         </div>
     </div>

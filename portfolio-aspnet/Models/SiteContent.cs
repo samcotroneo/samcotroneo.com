@@ -76,6 +76,86 @@ public static class SiteContent
         }
     };
 
+    public static List<World> Worlds { get; } = new()
+    {
+        new World
+        {
+            Name = "Kitchen",
+            Slug = "kitchen",
+            Description = "Food & recipe experiments — apps that help in the kitchen.",
+            Color = "#f4a261",
+            AccentClass = "text-kitchen",
+            Icon = "🍳",
+            Projects = new List<Project>
+            {
+                new Project
+                {
+                    Title = "BreadBuddy",
+                    Description = "A baking companion that times recipe steps and tracks your sourdough starter.",
+                    Image = "breadbuddy.png",
+                    Link = "https://samcotroneo.com",
+                    Technologies = new List<string> { "React Native", "Typescript", "Expo" }
+                },
+                new Project
+                {
+                    Title = "Dinnerbrain",
+                    Description = "Concept: a meal-planning assistant that turns what you have into dinner ideas.",
+                    Image = "",
+                    Link = "",
+                    Technologies = new List<string> { "Concept" }
+                },
+                new Project
+                {
+                    Title = "Pizzometry",
+                    Description = "Concept: a dough calculator and timer for home pizza makers.",
+                    Image = "",
+                    Link = "",
+                    Technologies = new List<string> { "Concept" }
+                }
+            }
+        },
+        new World
+        {
+            Name = "Arcade",
+            Slug = "arcade",
+            Description = "Web games and playable experiments built in the browser.",
+            Color = "#e9c46a",
+            AccentClass = "text-arcade",
+            Icon = "🕹️",
+            Projects = new List<Project>
+            {
+                new Project
+                {
+                    Title = "Honeybee Blitz",
+                    Description = "A fast-paced arcade game where you play as a honeybee collecting nectar, turning it into honey and avoiding obstacles.",
+                    Image = "honeybee.png",
+                    Link = "https://samcotroneo.com",
+                    Technologies = new List<string> { "PhaserJS", "Typescript", "Vite", "Aseprite" }
+                }
+            }
+        },
+        new World
+        {
+            Name = "Control Room",
+            Slug = "control-room",
+            Description = "Engineering tools, dashboards, and the site itself.",
+            Color = "#2a9d8f",
+            AccentClass = "text-control",
+            Icon = "🖥️",
+            Projects = new List<Project>
+            {
+                new Project
+                {
+                    Title = "samcotroneo.com",
+                    Description = "My personal site — a statically generated portfolio built as an exercise in craft and a place to show what I'm working on.",
+                    Image = "logo.svg",
+                    Link = "https://samcotroneo.com",
+                    Technologies = new List<string> { "ASP.NET Core", "Razor Pages", "TailwindCSS", "GitHub Actions" }
+                }
+            }
+        }
+    };
+
     public static ContactInfo Contact { get; } = new()
     {
         Description = "Thanks for stopping by! Feel free to reach out to me via the email below, or connect with me on LinkedIn or GitHub.",

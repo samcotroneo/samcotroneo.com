@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#f5e6c8"/>
+  <rect x="40" y="40" width="720" height="520" rx="8" fill="none" stroke="#d4b483" stroke-width="3"/>
+  
+  <!-- Map regions -->
+  <path d="M120,180 Q200,120 320,160 T480,220 T600,180 T700,260 L680,380 Q560,420 440,380 T260,420 T120,360 Z" fill="#8bc34a" opacity="0.6"/>
+  <path d="M100,200 Q180,240 220,320 T180,460 T80,420 Z" fill="#4fc3f7" opacity="0.5"/>
+  <path d="M520,260 Q620,240 720,280 L740,460 Q640,500 540,460 Z" fill="#ffca28" opacity="0.5"/>
+  
+  <!-- Paths -->
+  <path d="M220,300 Q340,260 420,300 T580,320" fill="none" stroke="#8d6e63" stroke-width="6" stroke-dasharray="12,8"/>
+  
+  <!-- Labels -->
+  <rect x="260" y="220" width="120" height="32" rx="4" fill="#fff" opacity="0.85"/>
+  <text x="320" y="242" text-anchor="middle" font-family="monospace" font-size="14" fill="#3e2723">KITCHEN</text>
+  
+  <rect x="120" y="340" width="120" height="32" rx="4" fill="#fff" opacity="0.85"/>
+  <text x="180" y="362" text-anchor="middle" font-family="monospace" font-size="14" fill="#3e2723">CONTROL</text>
+  
+  <rect x="580" y="360" width="110" height="32" rx="4" fill="#fff" opacity="0.85"/>
+  <text x="635" y="382" text-anchor="middle" font-family="monospace" font-size="14" fill="#3e2723">ARCADE</text>
+  
+  <!-- Title -->
+  <text x="400" y="80" text-anchor="middle" font-family="monospace" font-size="28" fill="#3e2723" font-weight="bold">SAM COTRONEO</text>
+  <text x="400" y="110" text-anchor="middle" font-family="monospace" font-size="14" fill="#6d4c41">EXPLORE THE MAP</text>
+  
+  <!-- Hero marker -->
+  <circle cx="220" cy="300" r="8" fill="#e53935"/>
+  <circle cx="220" cy="300" r="4" fill="#fff"/>
+</svg>

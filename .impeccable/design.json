@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-11T17:57:58+10:00",
+  "title": "Design System: Sam Cotroneo",
+  "extensions": {
+    "colorMeta": {
+      "den-wall": {
+        "role": "neutral",
+        "displayName": "Den Wall",
+        "canonical": "#1f1c2c",
+        "tonalRamp": ["#0c0b12", "#13111b", "#1a1725", "#1f1c2c", "#2d2844", "#4a4560", "#7a7491", "#c5c2ce"]
+      },
+      "den-dark": {
+        "role": "neutral",
+        "displayName": "Den Dark",
+        "canonical": "#15131f",
+        "tonalRamp": ["#08070b", "#0e0c13", "#15131f", "#1e1b2b", "#2c273f", "#49435e", "#787190", "#c3c0cc"]
+      },
+      "den-light": {
+        "role": "neutral",
+        "displayName": "Den Light",
+        "canonical": "#2d2844",
+        "tonalRamp": ["#12101a", "#1a1727", "#232035", "#2d2844", "#3f395b", "#5e577d", "#8c85ab", "#cac7d9"]
+      },
+      "lamp": {
+        "role": "primary",
+        "displayName": "Warm Desk Lamp",
+        "canonical": "#f4a261",
+        "tonalRamp": ["#4d2e17", "#7a4b25", "#a76834", "#d48843", "#f4a261", "#f7b883", "#f9d0a6", "#fce7d2"]
+      },
+      "lamp-deep": {
+        "role": "primary",
+        "displayName": "Deep Lamp",
+        "canonical": "#e76f51",
+        "tonalRamp": ["#4a2216", "#723620", "#9b4b2b", "#c46138", "#e76f51", "#ec8c74", "#f2a998", "#f7c8bb"]
+      },
+      "copper": {
+        "role": "tertiary",
+        "displayName": "Copper",
+        "canonical": "#c87a3a",
+        "tonalRamp": ["#402611", "#653b1b", "#8b5126", "#b06732", "#c87a3a", "#d59865", "#e3b790", "#f0d6bc"]
+      },
+      "crt": {
+        "role": "secondary",
+        "displayName": "CRT Phosphor",
+        "canonical": "#2a9d8f",
+        "tonalRamp": ["#0d2f2b", "#154a43", "#1e655c", "#248275", "#2a9d8f", "#4db2a5", "#7ac6bc", "#b6e0d9"]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Amber Glow",
+        "canonical": "#e9c46a",
+        "tonalRamp": ["#4a371b", "#715528", "#997336", "#c29145", "#e9c46a", "#eed28b", "#f3e0ad", "#f9efd2"]
+      },
+      "kitchen": {
+        "role": "accent",
+        "displayName": "Kitchen World",
+        "canonical": "#f4a261",
+        "tonalRamp": ["#4d2e17", "#7a4b25", "#a76834", "#d48843", "#f4a261", "#f7b883", "#f9d0a6", "#fce7d2"]
+      },
+      "arcade": {
+        "role": "accent",
+        "displayName": "Arcade World",
+        "canonical": "#e9c46a",
+        "tonalRamp": ["#4a371b", "#715528", "#997336", "#c29145", "#e9c46a", "#eed28b", "#f3e0ad", "#f9efd2"]
+      },
+      "control": {
+        "role": "accent",
+        "displayName": "Control Room World",
+        "canonical": "#2a9d8f",
+        "tonalRamp": ["#0d2f2b", "#154a43", "#1e655c", "#248275", "#2a9d8f", "#4db2a5", "#7ac6bc", "#b6e0d9"]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Room Text",
+        "canonical": "#e5e5e5",
+        "tonalRamp": ["#262626", "#404040", "#595959", "#7a7a7a", "#a3a3a3", "#c4c4c4", "#e5e5e5", "#f5f5f5"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "#d4d4d4",
+        "tonalRamp": ["#262626", "#404040", "#595959", "#737373", "#949494", "#b5b5b5", "#d4d4d4", "#ededed"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name and large uppercase headings."
+      },
+      "display-label": {
+        "displayName": "Display Label",
+        "purpose": "Taglines, scroll hints, and nav-shelf initial badges."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Supporting paragraphs and prose outside the hero scene."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "CRT-style code labels and world names under window icons."
+      }
+    },
+    "shadows": [
+      {
+        "name": "nav-shelf",
+        "value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+        "purpose": "Floating jump-bar at the bottom of the viewport."
+      },
+      {
+        "name": "crt-bezel",
+        "value": "0 0 0 1px hsla(0,0%,100%,0.08), 0 24px 60px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.6)",
+        "purpose": "The monitor's physical mass."
+      },
+      {
+        "name": "world-window",
+        "value": "0 1px 2px 0 rgba(0,0,0,0.05)",
+        "purpose": "Resting state of a colored CRT window tile."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default color and transform transitions."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Nav shelf slide animation."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.15s",
+        "purpose": "Hover color and small transform shifts."
+      },
+      {
+        "name": "duration-base",
+        "value": "0.3s",
+        "purpose": "World window lift and shine transitions."
+      },
+      {
+        "name": "duration-glow",
+        "value": "0.6s",
+        "purpose": "Room glow background cross-fade."
+      },
+      {
+        "name": "float",
+        "value": "float 6s ease-in-out infinite",
+        "purpose": "Scroll hint chevron bob."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "World Window Button",
+      "kind": "button",
+      "refersTo": "world-window",
+      "description": "Colored CRT window tile used to select a project world. The tile fill and label color come from the world's accent token.",
+      "html": "<button class=\"ds-world-window\" type=\"button\"><span class=\"ds-world-window__tile\" style=\"background-color:#f4a261\"></span><span class=\"ds-world-window__label\" style=\"color:#f4a261\">Kitchen</span></button>",
+      "css": ".ds-world-window { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; padding: 0; border: none; background: transparent; color: currentColor; cursor: pointer; outline: none; transition: transform 0.3s ease; } .ds-world-window:hover, .ds-world-window:focus-visible { transform: translateY(-4px) scale(1.02); } .ds-world-window:focus-visible { box-shadow: 0 0 0 2px #ffffff; } .ds-world-window__tile { width: 3.5rem; height: 3.5rem; border: 1px solid hsla(0,0%,100%,0.25); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); transition: transform 0.15s ease; } .ds-world-window:hover .ds-world-window__tile, .ds-world-window:focus-visible .ds-world-window__tile { transform: translateY(-0.25rem); } .ds-world-window__label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Nav Shelf",
+      "kind": "nav",
+      "refersTo": "nav-shelf",
+      "description": "Floating pill jump-bar that appears after the hero scrolls out of view. Contains top/contact icons and world initial badges.",
+      "html": "<nav class=\"ds-nav-shelf\" aria-label=\"Jump to world\"><a href=\"#top\" class=\"ds-nav-shelf__icon\" aria-label=\"Back to top\"><svg class=\"ds-nav-shelf__svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 10l7-7m0 0l7 7m-7-7v18\"/></svg></a><span class=\"ds-nav-shelf__divider\" aria-hidden=\"true\"></span><a href=\"#world-kitchen\" class=\"ds-nav-shelf__badge\" aria-label=\"Kitchen world\">K</a><a href=\"#world-arcade\" class=\"ds-nav-shelf__badge\" aria-label=\"Arcade world\">A</a><a href=\"#world-control-room\" class=\"ds-nav-shelf__badge\" aria-label=\"Control Room world\">C</a><span class=\"ds-nav-shelf__divider\" aria-hidden=\"true\"></span><a href=\"#contact\" class=\"ds-nav-shelf__icon\" aria-label=\"Contact\"><svg class=\"ds-nav-shelf__svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\"/></svg></a></nav>",
+      "css": ".ds-nav-shelf { position: fixed; bottom: 1.25rem; left: 50%; z-index: 50; transform: translateX(-50%); display: flex; align-items: center; gap: 0.25rem; padding: 0.5rem 0.75rem; background: #2d2844; border: 1px solid hsla(0,0%,100%,0.1); border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); } .ds-nav-shelf__icon, .ds-nav-shelf__badge { display: flex; align-items: center; justify-content: center; color: #d4d4d4; text-decoration: none; border-radius: 9999px; transition: color 0.15s ease, background-color 0.15s ease; } .ds-nav-shelf__icon { padding: 0.5rem; } .ds-nav-shelf__icon:hover, .ds-nav-shelf__icon:focus-visible, .ds-nav-shelf__badge:hover, .ds-nav-shelf__badge:focus-visible { color: #f4a261; background: hsla(0,0%,100%,0.1); } .ds-nav-shelf__badge { width: 2.25rem; height: 2.25rem; font-family: 'Chakra Petch', sans-serif; font-size: 0.875rem; font-weight: 500; } .ds-nav-shelf__svg { width: 1.25rem; height: 1.25rem; } .ds-nav-shelf__divider { width: 1px; height: 1rem; background: hsla(0,0%,100%,0.1); }"
+    },
+    {
+      "name": "Hero Nameplate",
+      "kind": "custom",
+      "description": "Centered hero title and tagline positioned below the desk in the room scene.",
+      "html": "<div class=\"ds-nameplate\"><h1 class=\"ds-nameplate__title\">Sam Cotroneo</h1><p class=\"ds-nameplate__tagline\">Coder Den · Pick a Project</p></div>",
+      "css": ".ds-nameplate { text-align: center; } .ds-nameplate__title { font-family: 'Chakra Petch', sans-serif; font-size: clamp(1.5rem, 5vw, 3rem); font-weight: 500; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; color: #c87a3a; } .ds-nameplate__tagline { margin-top: 0.5rem; font-family: 'Chakra Petch', sans-serif; font-size: clamp(0.75rem, 1.5vw, 0.875rem); font-weight: 500; line-height: 1.25; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(42,157,143,0.7); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Cozy Bedroom Coder Den",
+    "overview": "The site replaces the generic portfolio scroll with a single spatial scene: the visitor is inside a dim 90s bedroom, and a desk with a CRT monitor is the hub. The interface recedes so the artifact can lead; projects appear as colored windows open on the monitor, and navigation feels like a floating shelf above the desk. The mood is nostalgic, intimate, and quietly technical — a room built by someone who enjoys both craft and play.\n\nThe build commits to that scene literally: the hero is a full-viewport SVG room with an embedded HTML foreignObject for the interactive CRT windows. Light, texture, and material come from the room itself, not from abstract UI decorations.",
+    "keyCharacteristics": [
+      "Full-viewport SVG scene as the homepage stage.",
+      "Warm desk-lamp light from the left and a cooler CRT phosphor glow from the monitor.",
+      "World colors are drawn from the room's existing light sources.",
+      "Uppercase display type with wide tracking for labels and the hero name.",
+      "Subtle scanlines, vignettes, and noise textures on the CRT and walls.",
+      "Reduced-motion fallbacks for all animated room effects."
+    ],
+    "rules": [
+      { "name": "The One Lamp Rule", "body": "Warm light always enters from the left; a hover-driven world tint is a brief color wash, not a second light source.", "section": "colors" },
+      { "name": "The World-Color Rule", "body": "Each world owns one accent already present in the room (Kitchen = lamp, Arcade = amber, Control = CRT). New worlds must derive their color from the existing palette.", "section": "colors" },
+      { "name": "The Wide Tracking Rule", "body": "Display text and labels stay uppercase with tracking no tighter than 0.04em; labels and mono UI text use 0.1em or wider. Tight tracking is out of character for this room.", "section": "typography" },
+      { "name": "The Single Stage Rule", "body": "The first viewport is one continuous room scene; do not break it into separate horizontal bands or card rows.", "section": "layout" },
+      { "name": "The Light-First Depth Rule", "body": "Shadows and lifts are secondary; the room's lamp and CRT glows do the real work of establishing depth.", "section": "elevation" },
+      { "name": "The Room Geometry Rule", "body": "UI elements inside the scene are rounded; structural room elements (desk, walls, corkboard) are straight-edged.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep the first viewport as one continuous room scene with the CRT monitor as the hub.",
+      "Do derive every world accent from the existing palette (lamp, amber, CRT).",
+      "Do use uppercase labels with tracking of at least 0.1em for UI labels and at least 0.04em for display text.",
+      "Do respect prefers-reduced-motion: disable room-glow transitions and world-window hover lifts when reduced motion is requested.",
+      "Do hide the nav shelf while the hero is in view and slide it up only after scrolling."
+    ],
+    "donts": [
+      "Don't add a kicker or eyebrow above the hero name; the heading carries its own weight.",
+      "Don't use gradient text for emphasis.",
+      "Don't drop a generic card grid into the first viewport.",
+      "Don't use blur or glass as a decorative surface treatment; the scene already has light, texture, and material.",
+      "Don't introduce a new accent color for a future world; map it to an existing light source in the room."
+    ]
+  }
+}
