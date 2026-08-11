@@ -1,22 +1,48 @@
 @using PortfolioSite.Models
 
 <section id="about" class="py-24" aria-labelledby="about-heading">
+    @{
+        var careerStart = SiteContent.CareerStartDate;
+        var careerYears = DateTime.Now.Year - careerStart.Year;
+        if (DateTime.Now.Month < careerStart.Month || (DateTime.Now.Month == careerStart.Month && DateTime.Now.Day < careerStart.Day))
+        {
+            careerYears -= 1;
+        }
+        careerYears = Math.Max(careerYears, 0);
+        var careerStartIso = careerStart.ToString("yyyy-MM-dd");
+    }
     <div class="mx-auto max-w-3xl">
-        <div class="relative room-panel p-8 sm:p-10">
-            <div class="absolute -top-3 left-8 h-6 w-20 -rotate-3 bg-lamp/80" aria-hidden="true"></div>
-            <div class="absolute -top-3 right-12 h-6 w-16 rotate-2 bg-crt/80" aria-hidden="true"></div>
+        <p class="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-crt/80">// Player card</p>
+        <div class="pixel-frame relative">
+            <div class="absolute -top-3 left-8 z-10 h-6 w-20 -rotate-3 bg-lamp/80" aria-hidden="true"></div>
+            <div class="absolute -top-3 right-12 z-10 h-6 w-16 rotate-2 bg-crt/80" aria-hidden="true"></div>
+            <div class="pixel-panel relative p-8 sm:p-10">
 
-            <h2 id="about-heading" class="mb-6 font-display text-4xl font-semibold text-neutral-100">About me</h2>
+            <h2 id="about-heading" class="mb-8 font-pixel text-lg uppercase leading-relaxed text-copper sm:text-xl">About me</h2>
             <div class="space-y-4 text-lg leading-relaxed text-neutral-300">
                 @foreach (var content in SiteContent.AboutContent)
                 {
-                    var yearsText = $"{(DateTime.Now - SiteContent.CareerStartDate).TotalDays / 365:F0}";
-                    var yearsSpan = $"<span class=\"js-experience-years font-mono text-lamp\" data-start=\"{SiteContent.CareerStartDate:yyyy-MM-dd}\">{yearsText}</span>";
+                    var yearsSpan = $"<span class=\"js-experience-years font-mono text-lamp\" data-start=\"{careerStartIso}\">{careerYears}</span>";
                     var renderedContent = content.Replace("{years}", yearsSpan);
                     <p>
                         @Html.Raw(renderedContent)
                     </p>
                 }
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-white/10 pt-6">
+                <span class="font-mono text-xs uppercase tracking-[0.2em] text-crt/80">EXP</span>
+                <div class="flex gap-1" aria-hidden="true">
+                    @{
+                        var xpFilled = Math.Min(careerYears, 12);
+                    }
+                    @for (var i = 0; i < 12; i++)
+                    {
+                        <span class="xp-seg inline-block h-3 w-4 @(i < xpFilled ? "xp-seg--filled" : "")"></span>
+                    }
+                </div>
+                <span class="font-mono text-xs text-lamp"><span class="js-experience-years" data-start="@careerStartIso">@careerYears</span>+ yrs in the field</span>
+            </div>
             </div>
         </div>
     </div>

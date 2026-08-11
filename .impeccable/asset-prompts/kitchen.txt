@@ -1,0 +1,16 @@
+SNES/Genesis-era 16-bit pixel art scene background, game-grade quality, cosy pixel kitchen at night, wide 2.5:1 composition. Fine pixel clusters, dithered gradient shading, dark outlines, limited per-element palette ramps. Same pixel density and line weight as a matching bedroom scene in the same house. Warm and homely, dim night lighting.
+
+Palette anchors: warm cream checker tiles, lamp orange #f4a261, amber #e9c46a, teal #2a9d8f accents, night blue #131a33 outside the window.
+
+Composition (straight-on, flat elevation view):
+- Upper walls: warm cream checker-tile backsplash with visible grout lines, dithered shading.
+- Bottom ~30%: wooden counter with cabinet doors below, small brass knobs, subtle pixel wood grain on the counter top.
+- A night window on the wall with drawn curtains on both sides; dark starry night visible through the glass.
+- A wall shelf with preserve jars (amber, green, red contents) in simple glass silhouettes.
+- Hanging pans from a rack under the shelf.
+- On the stove: a red kettle and a lidded pot, tiny steam wisps.
+- Fridge at the right edge with a few small colorful magnets (abstract shapes only).
+
+The CENTER HORIZONTAL BAND of the image stays relatively calm and dark so HTML cards can float on top.
+
+STRICT: absolutely no text, letters, numbers, words, labels on jars, or readable UI anywhere in the image. No people. No watermark, no frame, no border, no vignette overlay. Flat final PNG, no transparency.

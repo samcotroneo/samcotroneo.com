@@ -117,6 +117,335 @@
   backdrop-filter: blur(4px);
 }
 
+/* Pixel-framed game-UI panels */
+.pixel-frame {
+  position: relative;
+}
+
+.pixel-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  translate: 6px 6px;
+  background: rgba(0, 0, 0, 0.45);
+  clip-path: polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.pixel-panel {
+  position: relative;
+  background: rgba(20, 17, 32, 0.94);
+  border: 2px solid rgba(244, 162, 97, 0.28);
+  clip-path: polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.pixel-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0 1px,
+    transparent 1px 4px
+  );
+  pointer-events: none;
+}
+
+.xp-seg {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.xp-seg--filled {
+  background: #f4a261;
+  border-color: rgba(244, 162, 97, 0.6);
+  box-shadow: 0 0 6px rgba(244, 162, 97, 0.4);
+}
+
+/* Technology marquee items styled as unlocked achievement trophies */
+.trophy-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.5rem;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  background: rgba(20, 17, 32, 0.94);
+  border: 3px solid rgba(244, 162, 97, 0.45);
+  /* Raised pixel bezel: dark outer seam + hard top-left light / bottom-right shade */
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.55),
+    inset 6px 6px 0 rgba(255, 255, 255, 0.05),
+    inset -6px -6px 0 rgba(0, 0, 0, 0.45);
+  clip-path: polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.trophy-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0 1px,
+    transparent 1px 4px
+  );
+  pointer-events: none;
+}
+
+.trophy-card__star {
+  position: absolute;
+  top: 0.375rem;
+  right: 0.5rem;
+  font-size: 0.625rem;
+  line-height: 1;
+  color: #f4a261;
+  text-shadow: 0 0 6px rgba(244, 162, 97, 0.6);
+}
+
+
+/* Pixel-dissolve transition strips between scenes and page sections */
+.pixel-dissolve {
+  height: 56px;
+  background: repeating-conic-gradient(#0a090f 0% 25%, transparent 0% 50%) 0 0 / 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
+  mask-image: linear-gradient(to bottom, transparent, #000);
+}
+
+.pixel-dissolve--flip {
+  -webkit-mask-image: linear-gradient(to top, transparent, #000);
+  mask-image: linear-gradient(to top, transparent, #000);
+}
+
+/* World section atmosphere */
+html,
+body {
+  overflow-x: clip;
+}
+
+.world-section {
+  min-height: 28rem;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.hero-sky,
+.hero-room,
+.hero-fx,
+.world-bg-layer,
+.world-particles {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#top {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.world-header {
+  --world-glow: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    0 -4px 24px color-mix(in srgb, var(--world-glow) 18%, transparent);
+}
+
+/* Project cards: themed per world */
+.project-card {
+  --project-glow: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card__title {
+  margin: 0;
+  padding: 1rem 1.25rem 0;
+}
+
+.project-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.project-card__screen {
+  margin-bottom: 1rem;
+  display: flex;
+  height: 9rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+/* Kitchen: handwritten recipe card pinned up in the scene */
+.project-card--kitchen {
+  background: #f6e9d2;
+  background-image: repeating-linear-gradient(0deg, transparent 0 22px, rgba(122, 78, 48, 0.08) 22px 23px);
+  border: 1px solid #d8bd94;
+  border-radius: 4px;
+  box-shadow: 0 14px 28px rgba(26, 18, 10, 0.4);
+}
+.project-card--kitchen::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 68px;
+  height: 18px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgba(233, 196, 106, 0.9);
+  box-shadow: 0 2px 4px rgba(26, 18, 10, 0.3);
+}
+.project-card--kitchen::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(122, 78, 48, 0.35);
+  pointer-events: none;
+}
+.project-card--kitchen:hover {
+  box-shadow: 0 18px 34px rgba(26, 18, 10, 0.5);
+}
+.project-card--kitchen .project-card__title {
+  color: #3c2b1d;
+  padding-top: 1.25rem;
+}
+.project-card--kitchen .project-card__screen {
+  background: rgba(255, 250, 236, 0.7);
+  border: 1px dashed rgba(122, 78, 48, 0.3);
+}
+.project-card--kitchen .project-card__desc {
+  color: #6b4f37;
+}
+.project-card--kitchen .tech-tag {
+  color: #7c4a1e !important;
+  border-color: rgba(124, 74, 30, 0.4) !important;
+  background: rgba(124, 74, 30, 0.07);
+}
+.project-card--kitchen .project-card__link {
+  color: #7c4a1e !important;
+}
+
+/* Arcade: neon cabinet with marquee, glowing screen, scanlines */
+.project-card--arcade {
+  background: #170e2b;
+  border: 2px solid #05030a;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 2px #2c1a4a,
+    0 14px 30px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+.project-card--arcade:hover {
+  box-shadow:
+    inset 0 0 0 2px #2c1a4a,
+    0 18px 34px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(233, 196, 106, 0.25);
+}
+.project-card--arcade .project-card__title {
+  background: #e9c46a;
+  color: #170e2b;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.55rem 1rem;
+  border-bottom: 2px solid #05030a;
+  box-shadow: 0 0 16px rgba(233, 196, 106, 0.45);
+}
+.project-card--arcade .project-card__screen {
+  background: #05030a;
+  border: 5px solid #0a0614;
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.12);
+  position: relative;
+}
+.project-card--arcade .project-card__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 4px);
+  pointer-events: none;
+}
+.project-card--arcade .project-card__desc {
+  color: #b9aedd;
+}
+
+/* Control Room: 3.5" floppy disk with metal shutter and paper label */
+.project-card--control-room {
+  background: #262a35;
+  border: 2px solid #151821;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px #343a49,
+    0 14px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.project-card--control-room::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 14%;
+  z-index: 1;
+  width: 16px;
+  height: 30px;
+  background: #151821;
+  border-radius: 0 0 3px 3px;
+}
+.project-card--control-room:hover {
+  box-shadow:
+    inset 0 0 0 1px #343a49,
+    0 18px 34px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(42, 157, 143, 0.25);
+}
+.project-card--control-room .project-card__title {
+  background: linear-gradient(180deg, #cdd2da, #a7adb8 55%, #868c98);
+  color: #151821;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid #151821;
+}
+.project-card--control-room .project-card__body {
+  background: #e9e5d8;
+  margin: 0.9rem;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #cfc9b8;
+  padding: 0.9rem 1rem 1.1rem;
+}
+.project-card--control-room .project-card__screen {
+  background: #262a35;
+}
+.project-card--control-room .project-card__desc {
+  color: #4a4f5c;
+}
+.project-card--control-room .tech-tag {
+  color: #1f6f64 !important;
+  border-color: rgba(31, 111, 100, 0.4) !important;
+  background: rgba(31, 111, 100, 0.08);
+}
+.project-card--control-room .project-card__link {
+  color: #1f6f64 !important;
+}
+
 /* Tape / sticky note details */
 .sticky-note {
   background: #e9c46a;
@@ -128,7 +457,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   padding: 0.25rem 0.5rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.75rem;
@@ -142,7 +471,6 @@
   --tech-gap: 1rem;
   --tech-speed: 30s;
   display: flex;
-  gap: var(--tech-gap);
   overflow: hidden;
   position: relative;
   mask-image: linear-gradient(
@@ -158,6 +486,8 @@
   display: flex;
   flex: 0 0 auto;
   gap: var(--tech-gap);
+  /* Trailing pad keeps the loop seamless: -100% then lands exactly on the duplicate. */
+  padding-right: var(--tech-gap);
   animation: tech-scroll var(--tech-speed) linear infinite;
 }
 

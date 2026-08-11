@@ -26,6 +26,7 @@ module.exports = {
         display: ["\"Chakra Petch\"", "sans-serif"],
         body: ["\"DM Sans\"", "sans-serif"],
         mono: ["\"JetBrains Mono\"", "monospace"],
+        pixel: ["\"Press Start 2P\"", "monospace"],
       },
       animation: {
         "lamp-drift": "lamp-drift 8s ease-in-out infinite alternate",

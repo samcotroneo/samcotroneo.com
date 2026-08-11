@@ -2,17 +2,18 @@
 
 <section id="experience" class="py-24" aria-labelledby="experience-heading">
     <div class="mb-12">
-        <h2 id="experience-heading" class="font-display text-4xl font-semibold text-neutral-100 sm:text-5xl">Work history</h2>
-        <p class="mt-2 text-neutral-400">The path so far, pinned to the wall.</p>
+        <p class="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-crt/80">// Quest log</p>
+        <h2 id="experience-heading" class="font-pixel text-lg uppercase leading-relaxed text-copper sm:text-xl">Work history</h2>
+        <p class="mt-4 text-neutral-400">The path so far, pinned to the wall.</p>
     </div>
 
     <div class="space-y-8">
         @foreach (var experience in SiteContent.Experiences)
         {
-            <article class="room-panel p-6 sm:p-8">
+            <article class="pixel-panel p-6 sm:p-8">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
                     <div class="sm:w-1/4">
-                        <p class="font-mono text-sm text-lamp">@experience.Date</p>
+                        <p class="font-mono text-sm text-lamp"><span class="text-copper" aria-hidden="true">▸ </span>@experience.Date</p>
                     </div>
                     <div class="sm:w-3/4">
                         <h3 class="mb-2 font-display text-2xl font-semibold text-neutral-100">

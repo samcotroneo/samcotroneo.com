@@ -3,60 +3,75 @@
 <section id="worlds" class="py-24" aria-labelledby="worlds-heading">
     <div class="mb-12 flex items-end justify-between border-b border-white/10 pb-6">
         <div>
-            <h2 id="worlds-heading" class="font-display text-4xl font-semibold text-neutral-100 sm:text-5xl">Project worlds</h2>
-            <p class="mt-2 max-w-xl text-neutral-400">Each window on the monitor is a corner of things I'm building.</p>
+            <p class="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-crt/80">// Save points</p>
+            <h2 id="worlds-heading" class="font-pixel text-lg uppercase leading-relaxed text-copper sm:text-xl">Project worlds</h2>
+            <p class="mt-4 max-w-xl text-neutral-400">Each window on the monitor is a corner of things I'm building.</p>
         </div>
         <a href="#top" class="hidden font-mono text-sm text-neutral-500 hover:text-lamp sm:inline">↑ back to desk</a>
     </div>
 
-    <div class="space-y-16">
+    <div class="space-y-10">
         @foreach (var world in SiteContent.Worlds)
         {
-            <article id="world-@world.Slug" class="room-panel scroll-mt-28 p-6 sm:p-8" data-world-section="@world.Slug">
-                <header class="mb-8 flex flex-wrap items-center gap-4">
-                    <span class="flex h-14 w-14 items-center justify-center rounded-xl text-3xl" style="background-color: @(world.Color + "26"); box-shadow: 0 0 24px @(world.Color + "1A")">
-                        @world.Icon
-                    </span>
-                    <div>
-                        <h3 class="font-display text-3xl font-semibold text-neutral-100">@world.Name</h3>
-                        <p class="text-neutral-400">@world.Description</p>
-                    </div>
-                    <div class="hidden h-px flex-1 bg-gradient-to-r from-white/10 to-transparent sm:block"></div>
-                </header>
+            <article id="world-@world.Slug"
+                     class="world-section world-theme-@world.Slug relative overflow-hidden scroll-mt-28 py-10 sm:py-14"
+                     data-world="@world.Slug"
+                     data-world-color="@world.Color"
+                     aria-label="@world.Name projects">
+                <div class="world-bg-layer pointer-events-none absolute -inset-[10%] z-0 will-change-transform" aria-hidden="true">
+                    <canvas class="world-bg-canvas h-full w-full" data-bg-slug="@world.Slug"></canvas>
+                    <img class="world-bg-img absolute inset-0 h-full w-full object-cover" src="~/img/scenes/@(world.Slug).png" alt="" loading="lazy" onerror="this.remove()" />
+                </div>
+                <canvas class="world-particles pointer-events-none absolute inset-0 z-[1] h-full w-full" data-particle-slug="@world.Slug" aria-hidden="true"></canvas>
 
-                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach (var project in world.Projects)
-                    {
-                        <div class="flex flex-col rounded-xl border border-white/10 bg-den-dark/60 p-5 transition-transform hover:-translate-y-1">
-                            @if (!string.IsNullOrEmpty(project.Image))
-                            {
-                                <div class="mb-4 flex h-40 items-center justify-center rounded-lg bg-den-light/50">
-                                    <img src="~/@project.Image" alt="" class="max-h-full max-w-full object-contain" loading="lazy" />
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="mb-4 flex h-40 items-center justify-center rounded-lg bg-den-light/50">
-                                    <span class="text-4xl">@world.Icon</span>
-                                </div>
-                            }
-                            <h4 class="mb-2 font-display text-xl font-semibold text-neutral-100">@project.Title</h4>
-                            <p class="mb-4 flex-1 text-sm leading-relaxed text-neutral-400">@project.Description</p>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach (var technology in project.Technologies)
-                                {
-                                    <span class="tech-tag" style="color: @(world.Color + "CC"); border-color: @(world.Color + "33")">@technology</span>
-                                }
-                            </div>
-                            @if (!string.IsNullOrEmpty(project.Link))
-                            {
-                                <a href="@project.Link" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline" style="color: @world.Color">
-                                    View project
-                                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                </a>
-                            }
+                <div class="world-inner relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 lg:px-12" style="--world-glow: @world.Color;">
+                    <header class="world-header flex flex-wrap items-center gap-4 rounded-xl border border-white/10 bg-den-dark/80 p-4 backdrop-blur-sm sm:p-5">
+                        <span class="flex h-14 w-14 items-center justify-center rounded-xl text-3xl" style="background-color: @(world.Color + "26"); box-shadow: 0 0 24px @(world.Color + "1A")">
+                            @world.Icon
+                        </span>
+                        <div>
+                            <h3 class="font-display text-3xl font-semibold text-neutral-100">@world.Name</h3>
+                            <p class="text-neutral-400">@world.Description</p>
                         </div>
-                    }
+                        <div class="hidden h-px flex-1 bg-gradient-to-r from-white/10 to-transparent sm:block"></div>
+                    </header>
+
+                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        @foreach (var project in world.Projects)
+                        {
+                            <div class="project-card project-card--@world.Slug transition-transform hover:-translate-y-1" style="--project-glow: @world.Color;">
+                                <h4 class="project-card__title font-display text-xl font-semibold text-neutral-100">@project.Title</h4>
+                                <div class="project-card__body">
+                                    @if (!string.IsNullOrEmpty(project.Image))
+                                    {
+                                        <div class="project-card__screen">
+                                            <img src="~/@project.Image" alt="" class="max-h-full max-w-full object-contain" loading="lazy" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="project-card__screen">
+                                            <span class="project-card__icon text-4xl">@world.Icon</span>
+                                        </div>
+                                    }
+                                    <p class="project-card__desc mb-4 flex-1 text-sm leading-relaxed text-neutral-400">@project.Description</p>
+                                    <div class="project-card__tags flex flex-wrap gap-2">
+                                    @foreach (var technology in project.Technologies)
+                                    {
+                                        <span class="tech-tag" style="color: @(world.Color + "CC"); border-color: @(world.Color + "33")">@technology</span>
+                                    }
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(project.Link))
+                                    {
+                                        <a href="@project.Link" target="_blank" rel="noopener noreferrer" class="project-card__link mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline" style="color: @world.Color">
+                                            View project
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
             </article>
         }

@@ -1,0 +1,14 @@
+SNES/Genesis-era 16-bit pixel art scene background, game-grade quality, retro neon arcade room at night, wide 2.5:1 composition. Fine pixel clusters, dithered gradient shading, dark outlines, limited per-element palette ramps. Same pixel density and line weight as matching room scenes in the same house. Electric but dark.
+
+Palette anchors: deep purple walls #211e30, neon magenta/pink, cyan, yellow, green marquee glows, teal #2a9d8f, night blue #131a33 shadows.
+
+Composition (straight-on, slight perspective on floor only):
+- Back wall: dark purple, dim, with abstract neon sign shapes in pink and cyan (curved tubes, zigzags, rings — NO letters, NO words).
+- Bottom half: a row of retro arcade cabinets side by side, each with a glowing marquee panel (yellow, pink, cyan, green — abstract glow only, no text) and dim gameplay screens showing tiny abstract pixel clusters (invader-like blobs, dots), dark enough to stay background.
+- Floor: synthwave perspective grid in magenta and purple, glowing lines receding toward the back wall, dithered reflections of neon on the floor.
+- Ceiling: a few hanging lamps with dim warm pools of light.
+- Atmospheric haze near the ceiling, subtle dithering.
+
+The CENTER HORIZONTAL BAND of the image stays relatively calm and dark so HTML cards can float on top.
+
+STRICT: absolutely no text, letters, numbers, words, or readable UI anywhere — marquees and neon signs are abstract shapes only. No people. No watermark, no frame, no border, no vignette overlay. Flat final PNG, no transparency.
