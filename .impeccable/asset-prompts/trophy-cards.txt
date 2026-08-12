@@ -1,0 +1,15 @@
+A game-UI sprite sheet of SIX square achievement badge frames arranged in a strict uniform grid of 3 columns x 2 rows. Each badge must EXACTLY fill its own 512x512 cell, edge to edge, with zero gaps, zero margins and zero overlap between cells. Flat front-on view, no perspective.
+
+Style: 16-bit pixel art, SNES/GBA era game UI craft, crisp chunky pixels, limited palette, subtle dithering, dark outline work. Cohesive with a cozy night-time coder den: deep near-black purple (#14111f) panel fills, warm copper/amber metal (#f4a261, #e9c46a) and muted teal (#2a9d8f) accents.
+
+Each badge: an ornate square plaque frame with a thick decorative border (steampunk-meets-arcade trophy cabinet vibes) and a large EMPTY flat dark center panel (solid very dark purple-brown, minimal texture) big enough to hold a centered game item icon. No text, no icons, no numbers, no rivets in the center panel.
+
+Six distinct border designs, one per cell, left to right, top to bottom:
+1. Heavy riveted copper plate frame with chunky corner bolts.
+2. Golden laurel-wreathed championship frame with small wing motifs at top corners.
+3. Teal-and-copper circuit-board frame with glowing trace lines and node dots.
+4. Ornate dark wood and brass picture-frame, carved corners, cozy study vibe.
+5. Neon-lit arcade cabinet bezel frame, thin amber light strips along the edges.
+6. Rugged iron-and-ember dungeon frame, hammered metal with faint orange glow seams.
+
+Uniform lighting across all six cells: soft warm light from top-left, gentle bottom-right shading. Background of each cell fully covered by the badge art itself (the badge IS the full cell content).

@@ -28,8 +28,8 @@
             @foreach (var tech in technologies)
             {
                 <div class="tech-marquee__item trophy-card">
-                    <span class="trophy-card__star" aria-hidden="true">★</span>
-                    <img src="@tech.Image" alt="@tech.Alt" class="h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
+                    <img class="trophy-card__bg" src="/img/ui/trophy-copper.png" alt="" aria-hidden="true" />
+                    <img src="@tech.Image" alt="@tech.Alt" class="trophy-card__icon h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
                 </div>
             }
         </div>
@@ -38,8 +38,8 @@
             @foreach (var tech in technologies)
             {
                 <div class="tech-marquee__item trophy-card">
-                    <span class="trophy-card__star" aria-hidden="true">★</span>
-                    <img src="@tech.Image" alt="" class="h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
+                    <img class="trophy-card__bg" src="/img/ui/trophy-copper.png" alt="" aria-hidden="true" />
+                    <img src="@tech.Image" alt="" class="trophy-card__icon h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
                 </div>
             }
         </div>

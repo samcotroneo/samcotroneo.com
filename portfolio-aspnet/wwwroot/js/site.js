@@ -1046,6 +1046,31 @@ const initHeroScene = () => {
   }
 };
 
+const TROPHY_FRAMES = ["copper", "laurel", "circuit", "wood", "neon", "ember"];
+
+// Deal trophy frames to the achievement cards, cycling evenly through the
+// set. The pick list is mirrored across every marquee track so the loop
+// still wraps seamlessly.
+const initTrophyFrames = () => {
+  const tracks = document.querySelectorAll(".tech-marquee__track");
+  if (!tracks.length) {
+    return;
+  }
+  const count = tracks[0].querySelectorAll(".trophy-card__bg").length;
+  if (!count) {
+    return;
+  }
+  const picks = Array.from(
+    { length: count },
+    (_, i) => TROPHY_FRAMES[i % TROPHY_FRAMES.length]
+  );
+  tracks.forEach((track) => {
+    track.querySelectorAll(".trophy-card__bg").forEach((bg, i) => {
+      bg.src = `/img/ui/trophy-${picks[i % count]}.png`;
+    });
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   initExperienceYears();
   initRoomGlow();
@@ -1054,4 +1079,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavShelf();
   initHeroScene();
   initWorldAtmospheres();
+  initTrophyFrames();
 });
