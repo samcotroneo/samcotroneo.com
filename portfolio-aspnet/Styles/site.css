@@ -214,19 +214,6 @@
 }
 
 
-/* Pixel-dissolve transition strips between scenes and page sections */
-.pixel-dissolve {
-  height: 56px;
-  background: repeating-conic-gradient(#0a090f 0% 25%, transparent 0% 50%) 0 0 / 8px 8px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
-  mask-image: linear-gradient(to bottom, transparent, #000);
-}
-
-.pixel-dissolve--flip {
-  -webkit-mask-image: linear-gradient(to top, transparent, #000);
-  mask-image: linear-gradient(to top, transparent, #000);
-}
-
 /* World section atmosphere */
 html,
 body {
@@ -259,6 +246,17 @@ body {
 #top {
   width: 100vw;
   margin-left: calc(50% - 50vw);
+}
+
+/* Fade everything below the desk line into the page backdrop, so the hero
+   dissolves into the darkness the worlds emerge from. --hero-desk-y is set
+   from JS, remapped through the hero.png cover crop; 80% is the no-art
+   fallback (procedural desk sits at 70%, its front fades below). */
+.hero-scene,
+.hero-tint {
+  --hero-desk-y: 80%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 var(--hero-desk-y), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 var(--hero-desk-y), transparent 100%);
 }
 
 .world-header {

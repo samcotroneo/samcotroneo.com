@@ -987,8 +987,11 @@ const initHeroScene = () => {
         monBot,
         monGlowH: my(ART_MON.y + ART_MON.h + 0.05) - monBot,
       };
+      // desk line drives the hero bottom fade in CSS
+      hero.style.setProperty("--hero-desk-y", `${(fxA.lampDesk * 100).toFixed(2)}%`);
     } else {
       fxA = null;
+      hero.style.removeProperty("--hero-desk-y");
     }
   };
 
