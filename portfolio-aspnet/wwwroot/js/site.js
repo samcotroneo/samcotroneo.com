@@ -730,6 +730,15 @@ const HERO_MON = { x: 0.35, y: 0.385, w: 0.3, h: 0.21 };
 const HERO_LAMP_X = 0.16;
 const HERO_MUG_X = 0.8;
 
+/* Anchors in hero.png image space (fractions of the 1536x1024 artwork). The
+   fx layer remaps them through the img's object-cover crop so lamp glow,
+   monitor glow and mug steam track the painted props at any viewport aspect
+   — including when the props are cropped out of frame entirely. */
+const HERO_ART = { w: 1536, h: 1024 };
+const ART_LAMP = { x: 0.101, glowY: 0.66, deskY: 0.79 };
+const ART_MUG = { x: 0.856, top: 0.727 };
+const ART_MON = { x: 0.228, y: 0.508, w: 0.556, h: 0.263 };
+
 const heroStarField = () => {
   let seed = 42;
   const rnd = () => {
@@ -952,6 +961,37 @@ const initHeroScene = () => {
   const cols = 192;
   let rows = 64;
 
+  // fx anchors resolved to element fractions: remapped through the hero.png
+  // cover crop when the art is present, else the procedural room constants
+  let fxA = null;
+  const computeFxAnchors = () => {
+    if (art && art.isConnected) {
+      const w = hero.clientWidth || 1;
+      const h = hero.clientHeight || 1;
+      const scale = Math.max(w / HERO_ART.w, h / HERO_ART.h);
+      const dispW = HERO_ART.w * scale;
+      const dispH = HERO_ART.h * scale;
+      const offX = (dispW - w) / 2;
+      const offY = (dispH - h) / 2;
+      const mx = (f) => (f * dispW - offX) / w;
+      const my = (f) => (f * dispH - offY) / h;
+      const monBot = my(ART_MON.y + ART_MON.h);
+      fxA = {
+        lampX: mx(ART_LAMP.x),
+        lampY: my(ART_LAMP.glowY),
+        lampDesk: my(ART_LAMP.deskY),
+        mugX: mx(ART_MUG.x),
+        mugTop: my(ART_MUG.top),
+        monX: mx(ART_MON.x),
+        monW: mx(ART_MON.x + ART_MON.w) - mx(ART_MON.x),
+        monBot,
+        monGlowH: my(ART_MON.y + ART_MON.h + 0.05) - monBot,
+      };
+    } else {
+      fxA = null;
+    }
+  };
+
   const paint = () => {
     const w = hero.clientWidth || 1;
     const h = hero.clientHeight || 1;
@@ -960,10 +1000,15 @@ const initHeroScene = () => {
       c.width = cols;
       c.height = rows;
     });
+    computeFxAnchors();
     paintHeroRoom(createPainter(room.getContext("2d"), cols, rows), stars);
   };
   paint();
   window.addEventListener("resize", paint);
+  if (art) {
+    art.addEventListener("load", paint);
+    art.addEventListener("error", paint);
+  }
 
   // parallax: scroll depth + gentle mouse drift
   let mouseX = 0;
@@ -994,8 +1039,8 @@ const initHeroScene = () => {
   const fxCtx = fxCanvas.getContext("2d");
   const steam = Array.from({ length: 6 }, () => ({ x: 0, y: 0, life: 0 }));
   const resetSteam = (p) => {
-    p.x = HERO_MUG_X + Math.random() * 0.03;
-    p.y = 0.645;
+    p.x = fxA ? fxA.mugX + (Math.random() - 0.5) * 0.04 : HERO_MUG_X + Math.random() * 0.03;
+    p.y = fxA ? fxA.mugTop : 0.645;
     p.life = 0.6 + Math.random() * 0.4;
   };
   steam.forEach(resetSteam);
@@ -1011,15 +1056,22 @@ const initHeroScene = () => {
     flicker += (Math.random() - 0.5) * 0.07;
     if (Math.random() < 0.015) flicker *= 0.55;
     flicker = Math.min(0.9, Math.max(0.3, flicker));
-    const lampX = fx(HERO_LAMP_X) + 4;
-    const lampY = fy(0.7) - fy(0.21) + 6;
+    const lampX = fxA ? fx(fxA.lampX) - 3 : fx(HERO_LAMP_X) + 4;
+    const lampY = fxA ? fy(fxA.lampY) : fy(0.7) - fy(0.21) + 6;
     for (let i = 0; i < 8; i++) {
       rect(lampX - 3 - i * 1.5, lampY + 4 + i * 2, 12 + i * 3, 2, "#f4a261", 0.045 * flicker);
     }
-    rect(lampX - 8, fy(0.695), 26, 3, "#f4a261", 0.1 * flicker);
+    rect(lampX - 8, fxA ? fy(fxA.lampDesk) : fy(0.695), 26, 3, "#f4a261", 0.1 * flicker);
     rect(lampX - 10, lampY - 8, 30, 10, "#f4a261", 0.05 * flicker);
 
-    rect(fx(HERO_MON.x), fy(HERO_MON.y) + fy(HERO_MON.h), fx(HERO_MON.w), fy(0.05), "#2a9d8f", 0.05 + 0.02 * Math.sin(t * 1.4));
+    rect(
+      fxA ? fx(fxA.monX) : fx(HERO_MON.x),
+      fxA ? fy(fxA.monBot) : fy(HERO_MON.y) + fy(HERO_MON.h),
+      fxA ? fx(fxA.monW) : fx(HERO_MON.w),
+      fxA ? fy(fxA.monGlowH) : fy(0.05),
+      "#2a9d8f",
+      0.05 + 0.02 * Math.sin(t * 1.4)
+    );
 
     steam.forEach((p) => {
       p.y -= 0.0009;
