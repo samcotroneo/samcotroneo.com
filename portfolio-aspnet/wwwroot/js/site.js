@@ -679,7 +679,7 @@ const initWorldAtmospheres = () => {
       if (!bgLayer || !particlesCanvas) return;
       const rect = section.getBoundingClientRect();
       const centerOffset = rect.top / window.innerHeight;
-      const range = rect.height * 0.12;
+      const range = Math.min(rect.height * 0.12, 120);
       bgLayer.style.transform = `translate3d(0, ${centerOffset * range}px, 0)`;
       particlesCanvas.style.transform = `translate3d(0, ${centerOffset * range * 0.4}px, 0)`;
     });

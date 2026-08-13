@@ -24,11 +24,11 @@
         @foreach (var world in SiteContent.Worlds)
         {
             <article id="world-@world.Slug"
-                     class="world-section world-theme-@world.Slug relative overflow-hidden scroll-mt-28 py-10 sm:py-14"
+                     class="world-section world-theme-@world.Slug relative scroll-mt-28 py-10 sm:py-14"
                      data-world="@world.Slug"
                      data-world-color="@world.Color"
                      aria-label="@world.Name projects">
-                <div class="world-bg-layer pointer-events-none absolute -inset-[10%] z-0 will-change-transform" aria-hidden="true">
+                <div class="world-bg-layer pointer-events-none absolute inset-x-0 -inset-y-[160px] z-0 will-change-transform" aria-hidden="true">
                     <canvas class="world-bg-canvas h-full w-full" data-bg-slug="@world.Slug"></canvas>
                     <img class="world-bg-img absolute inset-0 h-full w-full object-cover" src="~/img/scenes/@(world.Slug).png" alt="" loading="lazy" onerror="this.remove()" />
                 </div>
