@@ -248,18 +248,12 @@ body {
   image-rendering: crisp-edges;
 }
 
-/* Pixel-dissolve edges: bg layers bleed 160px past their section and
-   dither out, so adjacent worlds cross-dissolve like a retro scene wipe */
+/* Dip-to-dark edges: bg layers bleed 160px past their section and fade
+   smoothly to transparent, so the eye passes through darkness between rooms */
 .world-bg-layer {
   --bleed: 160px;
-  -webkit-mask:
-    url("../img/ui/dither-up.png") 0 0 / 100% var(--bleed) repeat-x,
-    linear-gradient(#000, #000) 0 var(--bleed) / 100% calc(100% - var(--bleed) * 2) no-repeat,
-    url("../img/ui/dither-down.png") 0 100% / 100% var(--bleed) repeat-x;
-  mask:
-    url("../img/ui/dither-up.png") 0 0 / 100% var(--bleed) repeat-x,
-    linear-gradient(#000, #000) 0 var(--bleed) / 100% calc(100% - var(--bleed) * 2) no-repeat,
-    url("../img/ui/dither-down.png") 0 100% / 100% var(--bleed) repeat-x;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent);
 }
 
 #top {
