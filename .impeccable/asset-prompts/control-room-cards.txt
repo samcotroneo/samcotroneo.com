@@ -1,0 +1,17 @@
+A game-UI concept sheet of FOUR portrait project-card container designs arranged in a strict uniform grid of 2 columns x 2 rows. Each design must EXACTLY fill its own 512x768 cell, edge to edge, with zero gaps, zero margins and zero overlap between cells. Flat front-on view, no perspective, no drop shadows outside the card.
+
+Style: 16-bit pixel art, SNES/GBA era game UI craft, crisp chunky pixels, limited palette, subtle dithering, dark outline work. Cohesive with a cozy night-time coder den: deep near-black purple (#14111f) chassis, muted teal (#2a9d8f) status lights, warm amber (#e9c46a) and copper (#f4a261) accents. Theme: a retro computer control room — consoles, terminals, racks, floppy drives.
+
+Every card must have THREE empty flat areas for later text overlay, in this layout:
+1. A label band near the top (flat solid color like a printed equipment label, no text, no letters, no numbers).
+2. A recessed screen window in the upper middle (solid very dark, faint green-teal phosphor glow at edges allowed) about half the card width's height.
+3. A large flat lower panel (solid color, minimal texture, small LEDs or switches pushed to the far edges) for description text.
+No text, no letters, no numbers, no icons anywhere in the art.
+
+Four distinct designs, one per cell, left to right, top to bottom:
+1. Rack-mount server module, brushed dark metal, teal status LED column on the left edge, ventilation slots, thumbscrews.
+2. Chunky retro desktop terminal console, warm grey-beige plastic, dark CRT window, keyboard ledge along the bottom.
+3. 3.5 inch floppy disk drive bay panel, dark steel chassis with a big floppy slot under the screen window, amber activity LED.
+4. Industrial control console slab, charcoal panel with chunky toggle switches and small round gauges pushed to the edges, copper nameplate strip.
+
+Uniform lighting across all four cells: soft warm light from top-left, gentle bottom-right shading. Background of each cell fully covered by the card art itself (the card IS the full cell content).

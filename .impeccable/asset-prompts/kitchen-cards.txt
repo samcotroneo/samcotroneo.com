@@ -1,0 +1,17 @@
+A game-UI concept sheet of FOUR portrait project-card container designs arranged in a strict uniform grid of 2 columns x 2 rows. Each design must EXACTLY fill its own 512x768 cell, edge to edge, with zero gaps, zero margins and zero overlap between cells. Flat front-on view, no perspective, no drop shadows outside the card.
+
+Style: 16-bit pixel art, SNES/GBA era game UI craft, crisp chunky pixels, limited palette, subtle dithering, dark outline work. Cohesive with a cozy night-time coder den: deep near-black purple (#14111f) accents, warm copper/amber (#f4a261, #e9c46a) and muted teal (#2a9d8f) highlights. Theme: a cozy pixel kitchen — recipe cards, wood, copper pans, warm paper.
+
+Every card must have THREE empty flat areas for later text overlay, in this layout:
+1. A title band near the top (flat solid color, no text, no letters, no numbers).
+2. A recessed dark window in the upper middle (solid very dark purple-brown, minimal texture, like a screen or photo frame) about half the card width's height.
+3. A large flat lower panel (solid light paper color or solid dark panel, minimal texture) for description text.
+No text, no letters, no numbers, no icons anywhere in the art.
+
+Four distinct designs, one per cell, left to right, top to bottom:
+1. Handwritten recipe index card pinned to a corkboard edge, cream lined paper, torn tape strips on top corners, copper pin.
+2. Wooden cutting-board plaque with a clipped recipe card, carved wood border, small copper rivets, hanging hole with twine at top.
+3. Stained vintage cookbook page with an ornate copper-ink border, coffee ring stain in one corner, warm parchment.
+4. Enamel and copper kitchen wall plaque, cream enamel center with copper rim like a saucepan lid, chunky bolts.
+
+Uniform lighting across all four cells: soft warm light from top-left, gentle bottom-right shading. Background of each cell fully covered by the card art itself (the card IS the full cell content).

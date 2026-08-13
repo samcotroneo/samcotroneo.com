@@ -1,5 +1,15 @@
 @using PortfolioSite.Models
 
+@{
+    // Winning card art per world (picked from the variant lab)
+    var cardSkins = new Dictionary<string, (string Variant, string Image)>
+    {
+        { "kitchen", ("k1", "kitchen-1") },
+        { "arcade", ("a2", "arcade-2") },
+        { "control-room", ("c4", "control-4") },
+    };
+}
+
 <section id="worlds" class="py-24" aria-labelledby="worlds-heading">
     <div class="mb-12 flex items-end justify-between border-b border-white/10 pb-6">
         <div>
@@ -39,37 +49,34 @@
                     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         @foreach (var project in world.Projects)
                         {
-                            <div class="project-card project-card--@world.Slug transition-transform hover:-translate-y-1" style="--project-glow: @world.Color;">
-                                <h4 class="project-card__title font-display text-xl font-semibold text-neutral-100">@project.Title</h4>
-                                <div class="project-card__body">
+                            var skin = cardSkins[world.Slug];
+                            <article class="wcard wcard--@skin.Variant transition-transform hover:-translate-y-1">
+                                <img class="wcard__bg" src="~/img/ui/cards/@(skin.Image).png" alt="" aria-hidden="true" loading="lazy" />
+                                <h4 class="wcard__title font-pixel">@project.Title</h4>
+                                <div class="wcard__screen">
                                     @if (!string.IsNullOrEmpty(project.Image))
                                     {
-                                        <div class="project-card__screen">
-                                            <img src="~/@project.Image" alt="" class="max-h-full max-w-full object-contain" loading="lazy" />
-                                        </div>
+                                        <img src="~/@project.Image" alt="" loading="lazy" />
                                     }
                                     else
                                     {
-                                        <div class="project-card__screen">
-                                            <span class="project-card__icon text-4xl">@world.Icon</span>
-                                        </div>
+                                        <span aria-hidden="true">@world.Icon</span>
                                     }
-                                    <p class="project-card__desc mb-4 flex-1 text-sm leading-relaxed text-neutral-400">@project.Description</p>
-                                    <div class="project-card__tags flex flex-wrap gap-2">
-                                    @foreach (var technology in project.Technologies)
-                                    {
-                                        <span class="tech-tag" style="color: @(world.Color + "CC"); border-color: @(world.Color + "33")">@technology</span>
-                                    }
+                                </div>
+                                <div class="wcard__body">
+                                    <p class="wcard__desc">@project.Description</p>
+                                    <div class="wcard__tags">
+                                        @foreach (var technology in project.Technologies)
+                                        {
+                                            <span class="wcard__tag">@technology</span>
+                                        }
                                     </div>
                                     @if (!string.IsNullOrEmpty(project.Link))
                                     {
-                                        <a href="@project.Link" target="_blank" rel="noopener noreferrer" class="project-card__link mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline" style="color: @world.Color">
-                                            View project
-                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                        </a>
+                                        <a href="@project.Link" target="_blank" rel="noopener noreferrer" class="wcard__link">View project →</a>
                                     }
                                 </div>
-                            </div>
+                            </article>
                         }
                     </div>
                 </div>

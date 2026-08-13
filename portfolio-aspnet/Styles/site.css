@@ -261,185 +261,198 @@ body {
     0 -4px 24px color-mix(in srgb, var(--world-glow) 18%, transparent);
 }
 
-/* Project cards: themed per world */
-.project-card {
-  --project-glow: #ffffff;
+/* ===== Generated world-card containers =====
+   Art-backed card: generated pixel-art bg with HTML overlaid in three
+   reserved zones (title band / screen window / body panel). Zone geometry
+   is per-variant, measured from the sliced concept sheets. cqh units are
+   relative to the card itself (container-type: size + fixed aspect). */
+.wcard {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card__title {
-  margin: 0;
-  padding: 1rem 1.25rem 0;
-}
-
-.project-card__body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 0.75rem 1.25rem 1.25rem;
-}
-
-.project-card__screen {
-  margin-bottom: 1rem;
-  display: flex;
-  height: 9rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-}
-
-/* Kitchen: handwritten recipe card pinned up in the scene */
-.project-card--kitchen {
-  background: #f6e9d2;
-  background-image: repeating-linear-gradient(0deg, transparent 0 22px, rgba(122, 78, 48, 0.08) 22px 23px);
-  border: 1px solid #d8bd94;
-  border-radius: 4px;
-  box-shadow: 0 14px 28px rgba(26, 18, 10, 0.4);
-}
-.project-card--kitchen::before {
-  content: "";
-  position: absolute;
-  top: -9px;
-  left: 50%;
-  width: 68px;
-  height: 18px;
-  transform: translateX(-50%) rotate(-2deg);
-  background: rgba(233, 196, 106, 0.9);
-  box-shadow: 0 2px 4px rgba(26, 18, 10, 0.3);
-}
-.project-card--kitchen::after {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 1px dashed rgba(122, 78, 48, 0.35);
-  pointer-events: none;
-}
-.project-card--kitchen:hover {
-  box-shadow: 0 18px 34px rgba(26, 18, 10, 0.5);
-}
-.project-card--kitchen .project-card__title {
-  color: #3c2b1d;
-  padding-top: 1.25rem;
-}
-.project-card--kitchen .project-card__screen {
-  background: rgba(255, 250, 236, 0.7);
-  border: 1px dashed rgba(122, 78, 48, 0.3);
-}
-.project-card--kitchen .project-card__desc {
-  color: #6b4f37;
-}
-.project-card--kitchen .tech-tag {
-  color: #7c4a1e !important;
-  border-color: rgba(124, 74, 30, 0.4) !important;
-  background: rgba(124, 74, 30, 0.07);
-}
-.project-card--kitchen .project-card__link {
-  color: #7c4a1e !important;
-}
-
-/* Arcade: neon cabinet with marquee, glowing screen, scanlines */
-.project-card--arcade {
-  background: #170e2b;
-  border: 2px solid #05030a;
-  border-radius: 10px;
-  box-shadow:
-    inset 0 0 0 2px #2c1a4a,
-    0 14px 30px rgba(0, 0, 0, 0.55);
+  aspect-ratio: 2 / 3;
   overflow: hidden;
+  container-type: size;
 }
-.project-card--arcade:hover {
-  box-shadow:
-    inset 0 0 0 2px #2c1a4a,
-    0 18px 34px rgba(0, 0, 0, 0.6),
-    0 0 26px rgba(233, 196, 106, 0.25);
-}
-.project-card--arcade .project-card__title {
-  background: #e9c46a;
-  color: #170e2b;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.55rem 1rem;
-  border-bottom: 2px solid #05030a;
-  box-shadow: 0 0 16px rgba(233, 196, 106, 0.45);
-}
-.project-card--arcade .project-card__screen {
-  background: #05030a;
-  border: 5px solid #0a0614;
-  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.12);
-  position: relative;
-}
-.project-card--arcade .project-card__screen::after {
-  content: "";
+
+.wcard__bg {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 4px);
-  pointer-events: none;
-}
-.project-card--arcade .project-card__desc {
-  color: #b9aedd;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
 }
 
-/* Control Room: 3.5" floppy disk with metal shutter and paper label */
-.project-card--control-room {
-  background: #262a35;
-  border: 2px solid #151821;
-  border-radius: 6px;
-  box-shadow:
-    inset 0 0 0 1px #343a49,
-    0 14px 30px rgba(0, 0, 0, 0.5);
+.wcard__title {
+  position: absolute;
+  top: calc(var(--t-top) * 1%);
+  height: calc(var(--t-h) * 1%);
+  left: calc(var(--t-x) * 1%);
+  right: calc(var(--t-xr, var(--t-x)) * 1%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  font-size: calc(var(--t-h) * var(--t-scale, 0.36) * 1cqh);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--t-color);
+  transform: translateY(calc(var(--t-shift, 0) * 1cqh));
+}
+
+.wcard__screen {
+  position: absolute;
+  top: calc(var(--s-top) * 1%);
+  height: calc(var(--s-h) * 1%);
+  left: calc(var(--s-x) * 1%);
+  right: calc(var(--s-xr, var(--s-x)) * 1%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
-.project-card--control-room::before {
-  content: "";
+
+.wcard__screen > span {
+  font-size: calc(var(--s-h) * 0.52cqh);
+  line-height: 1;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.65));
+}
+
+.wcard__screen > img {
+  max-height: 78%;
+  max-width: 78%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.65));
+}
+
+.wcard__body {
   position: absolute;
-  top: 0;
-  right: 14%;
-  z-index: 1;
-  width: 16px;
-  height: 30px;
-  background: #151821;
-  border-radius: 0 0 3px 3px;
+  top: calc(var(--b-top) * 1%);
+  bottom: calc(var(--b-bot) * 1%);
+  left: calc(var(--b-xl, var(--b-x)) * 1%);
+  right: calc(var(--b-xr, var(--b-x)) * 1%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9cqh;
+  overflow: hidden;
+  color: var(--b-color);
 }
-.project-card--control-room:hover {
-  box-shadow:
-    inset 0 0 0 1px #343a49,
-    0 18px 34px rgba(0, 0, 0, 0.6),
-    0 0 26px rgba(42, 157, 143, 0.25);
+
+.wcard__desc {
+  margin: 0;
+  flex: 1;
+  font-size: 1.85cqh;
+  line-height: 1.45;
+  color: var(--b-color);
+  overflow: hidden;
 }
-.project-card--control-room .project-card__title {
-  background: linear-gradient(180deg, #cdd2da, #a7adb8 55%, #868c98);
-  color: #151821;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
+
+.wcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5cqh 0.9cqw;
+}
+
+.wcard__tag {
+  font-family: ui-monospace, monospace;
+  font-size: 1.35cqh;
   text-transform: uppercase;
-  padding: 0.7rem 1rem;
-  border-bottom: 2px solid #151821;
+  letter-spacing: 0.08em;
+  color: var(--b-tag);
+  border: 1px solid var(--b-tag-border);
+  padding: 0.35cqh 1cqw;
 }
-.project-card--control-room .project-card__body {
-  background: #e9e5d8;
-  margin: 0.9rem;
-  border-radius: 3px;
-  box-shadow: inset 0 0 0 1px #cfc9b8;
-  padding: 0.9rem 1rem 1.1rem;
+
+.wcard__link {
+  font-size: 1.6cqh;
+  font-weight: 600;
+  color: var(--b-link);
+  text-decoration: none;
 }
-.project-card--control-room .project-card__screen {
-  background: #262a35;
+
+.wcard__link:hover {
+  text-decoration: underline;
 }
-.project-card--control-room .project-card__desc {
-  color: #4a4f5c;
+
+/* --- Kitchen variants (cream paper bodies -> dark ink text) --- */
+.wcard--k1 { /* corkboard index card */
+  --t-top: 17; --t-h: 10; --t-x: 16; --t-color: #3a2413; --t-shift: 0.8;
+  --s-top: 30; --s-h: 26; --s-x: 16;
+  --b-top: 57; --b-bot: 13; --b-x: 13; --b-xl: 20;
+  --b-color: #46321c; --b-tag: #8a5a28; --b-tag-border: rgba(138, 90, 40, 0.45); --b-link: #9a5518;
 }
-.project-card--control-room .tech-tag {
-  color: #1f6f64 !important;
-  border-color: rgba(31, 111, 100, 0.4) !important;
-  background: rgba(31, 111, 100, 0.08);
+.wcard--k2 { /* cutting-board plaque */
+  --t-top: 20; --t-h: 8; --t-x: 16; --t-color: #3a2413;
+  --s-top: 38; --s-h: 24; --s-x: 16;
+  --b-top: 64; --b-bot: 7; --b-x: 14;
+  --b-color: #46321c; --b-tag: #8a5a28; --b-tag-border: rgba(138, 90, 40, 0.45); --b-link: #9a5518;
 }
-.project-card--control-room .project-card__link {
-  color: #1f6f64 !important;
+.wcard--k3 { /* stained cookbook page */
+  --t-top: 13; --t-h: 7.5; --t-x: 15; --t-color: #3a2413;
+  --s-top: 23; --s-h: 27; --s-x: 15;
+  --b-top: 53; --b-bot: 7; --b-xl: 18; --b-xr: 11;
+  --b-color: #46321c; --b-tag: #8a5a28; --b-tag-border: rgba(138, 90, 40, 0.45); --b-link: #9a5518;
+}
+.wcard--k4 { /* enamel & copper plaque */
+  --t-top: 18; --t-h: 10; --t-x: 18; --t-color: #3a2413;
+  --s-top: 31; --s-h: 27; --s-x: 13;
+  --b-top: 61; --b-bot: 7; --b-x: 13;
+  --b-color: #46321c; --b-tag: #8a5a28; --b-tag-border: rgba(138, 90, 40, 0.45); --b-link: #9a5518;
+}
+
+/* --- Arcade variants (dark bodies -> light text, amber marquees) --- */
+.wcard--a1 { /* classic woodgrain */
+  --t-top: 4.5; --t-h: 10; --t-x: 10; --t-color: #2a1c05;
+  --s-top: 23.5; --s-h: 28; --s-x: 15;
+  --b-top: 68; --b-bot: 14; --b-x: 10;
+  --b-color: #d8d4e8; --b-tag: #e9c46a; --b-tag-border: rgba(233, 196, 106, 0.35); --b-link: #e9c46a;
+}
+.wcard--a2 { /* neon chrome */
+  --t-top: 4.5; --t-h: 10; --t-x: 12; --t-color: #2a1c05; --t-scale: 0.30;
+  --s-top: 19.5; --s-h: 32; --s-x: 17;
+  --b-top: 70.5; --b-bot: 5; --b-x: 11; --b-xl: 14;
+  --b-color: #d8d4e8; --b-tag: #7de0f0; --b-tag-border: rgba(125, 224, 240, 0.35); --b-link: #f07dc8;
+}
+.wcard--a3 { /* retro wood-panel */
+  --t-top: 6; --t-h: 10; --t-x: 11; --t-color: #2a1c05;
+  --s-top: 23; --s-h: 24; --s-x: 17;
+  --b-top: 65.5; --b-bot: 18; --b-x: 10;
+  --b-color: #d8d4e8; --b-tag: #e9c46a; --b-tag-border: rgba(233, 196, 106, 0.35); --b-link: #e9c46a;
+}
+.wcard--a4 { /* teal sci-fi */
+  --t-top: 7; --t-h: 10; --t-x: 14; --t-color: #2a1c05;
+  --s-top: 24; --s-h: 25; --s-x: 16;
+  --b-top: 66; --b-bot: 13; --b-x: 11;
+  --b-color: #d8d4e8; --b-tag: #2a9d8f; --b-tag-border: rgba(42, 157, 143, 0.4); --b-link: #4cc9b5;
+}
+
+/* --- Control-room variants --- */
+.wcard--c1 { /* server-rack unit */
+  --t-top: 5; --t-h: 7.5; --t-x: 20; --t-color: #241a08;
+  --s-top: 20; --s-h: 26.5; --s-x: 24; --s-xr: 13;
+  --b-top: 69; --b-bot: 4; --b-x: 8;
+  --b-color: #d8d4e8; --b-tag: #2a9d8f; --b-tag-border: rgba(42, 157, 143, 0.4); --b-link: #4cc9b5;
+}
+.wcard--c2 { /* beige CRT terminal — beige body -> dark text */
+  --t-top: 4.5; --t-h: 6.5; --t-x: 9; --t-xr: 24; --t-color: #2a1503;
+  --s-top: 19; --s-h: 29.5; --s-x: 11; --s-xr: 25;
+  --b-top: 63; --b-bot: 13; --b-x: 5;
+  --b-color: #33301f; --b-tag: #b25a1e; --b-tag-border: rgba(178, 90, 30, 0.45); --b-link: #b25a1e;
+}
+.wcard--c3 { /* floppy-drive console */
+  --t-top: 3; --t-h: 8; --t-x: 13; --t-color: #06231f;
+  --s-top: 16; --s-h: 27; --s-x: 15;
+  --b-top: 62; --b-bot: 3.5; --b-x: 6;
+  --b-color: #d8d4e8; --b-tag: #2a9d8f; --b-tag-border: rgba(42, 157, 143, 0.4); --b-link: #4cc9b5;
+}
+.wcard--c4 { /* copper gauge console — gauges/right column, toggles/left */
+  --t-top: 2.5; --t-h: 8; --t-x: 9; --t-xr: 25; --t-color: #241a08;
+  --s-top: 15; --s-h: 30; --s-x: 10; --s-xr: 29;
+  --b-top: 54; --b-bot: 4; --b-xl: 23; --b-xr: 15;
+  --b-color: #ddd5c7; --b-tag: #6fd8c8; --b-tag-border: rgba(111, 216, 200, 0.4); --b-link: #d08c4a;
 }
 
 /* Tape / sticky note details */
