@@ -150,18 +150,6 @@ const initNavShelf = () => {
   observer.observe(hero);
 };
 
-const WORLD_COLORS = {
-  kitchen: "#f4a261",
-  "control-room": "#2a9d8f",
-  arcade: "#e9c46a",
-};
-
-const PARTICLE_PALETTES = {
-  kitchen: ["#f2e2c4"],
-  "control-room": ["#2a9d8f", "#7fdb9a"],
-  arcade: ["#e9c46a", "#ff2e88", "#4fc3f7"],
-};
-
 const createPainter = (ctx, cols, rows) => {
   const rect = (x, y, w, h, color, alpha = 1) => {
     ctx.globalAlpha = alpha;
@@ -559,17 +547,68 @@ const paintControlRoom = (P) => {
   }
 };
 
-const drawPixelBackground = (ctx, slug, cols, rows) => {
-  const P = createPainter(ctx, cols, rows);
-  if (slug === "kitchen") paintKitchen(P);
-  else if (slug === "control-room") paintControlRoom(P);
-  else if (slug === "arcade") paintArcade(P);
+// Generic background for worlds without a bespoke painter: dark ramp,
+// a low horizon glow in the world's accent color, and sparse dim pixels.
+const paintGeneric = (P, color) => {
+  const { rect, px, dither, rampV, fx, fy, cols, rows } = P;
+  rampV(0, 0, cols, rows, ["#05070c", "#090c14", "#0e121c"]);
+  const gy = fy(0.52);
+  rect(0, gy, cols, fy(0.14), color, 0.07);
+  dither(0, gy - 2, cols, 3, "#05070c", color, 0.05);
+  for (let i = 0; i < 40; i++) {
+    px(Math.random() * cols, Math.random() * gy, color, 0.08 + Math.random() * 0.12);
+  }
+  // ground line
+  const fl = rows - 2;
+  for (let x = fx(0.04); x < fx(0.96); x++) {
+    px(x, fl + (Math.floor(x / 6) % 2), "#05070c");
+  }
+};
+
+// Per-world FX registry. Adding a world needs no entry here — the generic
+// fallback (driven by data-world-color) renders until a bespoke one is added.
+const WORLD_FX = {
+  kitchen: {
+    painter: paintKitchen,
+    palette: ["#f2e2c4"],
+    particleCount: 22,
+    particleMaxAlpha: 0.3,
+    spawnParticle: (cols, rows, c) => ({ c, x: cols * (0.07 + Math.random() * 0.06), y: rows * 0.54 - Math.random() * 3, vx: (Math.random() - 0.5) * 0.12, vy: -0.06 - Math.random() * 0.12, life: Math.random(), size: 1 + Math.floor(Math.random() * 2) }),
+  },
+  "control-room": {
+    painter: paintControlRoom,
+    palette: ["#2a9d8f", "#7fdb9a"],
+    particleCount: 22,
+    particleMaxAlpha: 0.5,
+    spawnParticle: (cols, rows, c) => ({ c, x: Math.random() < 0.5 ? 0 : cols - 1, y: Math.floor(Math.random() * rows), vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.15, life: Math.random(), size: 1 }),
+  },
+  arcade: {
+    painter: paintArcade,
+    palette: ["#e9c46a", "#ff2e88", "#4fc3f7"],
+    particleCount: 28,
+    particleMaxAlpha: 0.5,
+    spawnParticle: (cols, rows, c) => ({ c, x: Math.floor(Math.random() * cols), y: rows * (0.28 + Math.random() * 0.08), vx: (Math.random() - 0.5) * 0.25, vy: -0.05 - Math.random() * 0.15, life: Math.random(), size: 1 + Math.floor(Math.random() * 2) }),
+  },
+};
+
+const genericWorldFx = (color) => ({
+  painter: (P) => paintGeneric(P, color),
+  palette: [color],
+  particleCount: 22,
+  particleMaxAlpha: 0.4,
+  spawnParticle: (cols, rows, c) => ({ c, x: Math.floor(Math.random() * cols), y: Math.floor(Math.random() * rows), vx: (Math.random() - 0.5) * 0.2, vy: -0.04 - Math.random() * 0.12, life: Math.random(), size: 1 }),
+});
+
+const worldFxFor = (slug, color) => WORLD_FX[slug] || genericWorldFx(color || "#8ea0c0");
+
+const drawPixelBackground = (ctx, fx, cols, rows) => {
+  fx.painter(createPainter(ctx, cols, rows));
 };
 
 class ParticleSystem {
-  constructor(canvas, slug) {
+  constructor(canvas, fx) {
     this.canvas = canvas;
-    this.slug = slug;
+    this.fx = fx;
     this.ctx = canvas.getContext("2d");
     this.particles = [];
     this.running = false;
@@ -582,24 +621,15 @@ class ParticleSystem {
     this.cols = cols;
     this.rows = rows;
     this.particles = [];
-    const count = this.slug === "arcade" ? 28 : 22;
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < this.fx.particleCount; i++) {
       this.particles.push(this.createParticle());
     }
   }
 
   createParticle() {
-    const x = Math.floor(Math.random() * this.cols);
-    const y = Math.floor(Math.random() * this.rows);
-    const palette = PARTICLE_PALETTES[this.slug] || ["#ffffff"];
+    const palette = this.fx.palette;
     const c = palette[Math.floor(Math.random() * palette.length)];
-    if (this.slug === "kitchen") {
-      return { c, x: this.cols * (0.07 + Math.random() * 0.06), y: this.rows * 0.54 - Math.random() * 3, vx: (Math.random() - 0.5) * 0.12, vy: -0.06 - Math.random() * 0.12, life: Math.random(), size: 1 + Math.floor(Math.random() * 2) };
-    }
-    if (this.slug === "control-room") {
-      return { c, x: Math.random() < 0.5 ? 0 : this.cols - 1, y, vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.15, life: Math.random(), size: 1 };
-    }
-    return { c, x, y: this.rows * (0.28 + Math.random() * 0.08), vx: (Math.random() - 0.5) * 0.25, vy: -0.05 - Math.random() * 0.15, life: Math.random(), size: 1 + Math.floor(Math.random() * 2) };
+    return this.fx.spawnParticle(this.cols, this.rows, c);
   }
 
   setVisible(visible) {
@@ -620,7 +650,7 @@ class ParticleSystem {
 
   draw() {
     this.ctx.clearRect(0, 0, this.cols, this.rows);
-    const maxAlpha = this.slug === "kitchen" ? 0.3 : 0.5;
+    const maxAlpha = this.fx.particleMaxAlpha;
     for (const p of this.particles) {
       p.x += p.vx;
       p.y += p.vy;
@@ -653,7 +683,7 @@ const initWorldAtmospheres = () => {
     const particles = section.querySelector(".world-particles");
     if (!bg || !particles) return;
 
-    const slug = section.getAttribute("data-world");
+    const fx = worldFxFor(section.getAttribute("data-world"), section.getAttribute("data-world-color"));
     const width = section.clientWidth || 1;
     const height = section.clientHeight || 1;
     const cols = 192;
@@ -662,9 +692,9 @@ const initWorldAtmospheres = () => {
     bg.width = cols;
     bg.height = rows;
     const bgCtx = bg.getContext("2d");
-    drawPixelBackground(bgCtx, slug, cols, rows);
+    drawPixelBackground(bgCtx, fx, cols, rows);
 
-    const sys = systems.get(section) || new ParticleSystem(particles, slug);
+    const sys = systems.get(section) || new ParticleSystem(particles, fx);
     sys.resize(cols, rows);
     systems.set(section, sys);
   };

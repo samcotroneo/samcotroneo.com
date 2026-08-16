@@ -1,15 +1,5 @@
 @using PortfolioSite.Models
 
-@{
-    // Winning card art per world (picked from the variant lab)
-    var cardSkins = new Dictionary<string, (string Variant, string Image)>
-    {
-        { "kitchen", ("k1", "kitchen-1") },
-        { "arcade", ("a2", "arcade-2") },
-        { "control-room", ("c4", "control-4") },
-    };
-}
-
 <section id="worlds" class="py-24" aria-labelledby="worlds-heading">
     <div class="mb-12 flex items-end justify-between border-b border-white/10 pb-6">
         <div>
@@ -49,9 +39,8 @@
                     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         @foreach (var project in world.Projects)
                         {
-                            var skin = cardSkins[world.Slug];
-                            <article class="wcard wcard--@skin.Variant transition-transform hover:-translate-y-1">
-                                <img class="wcard__bg" src="~/img/ui/cards/@(skin.Image).png" alt="" aria-hidden="true" loading="lazy" />
+                            <article class="wcard wcard--@world.CardSkin transition-transform hover:-translate-y-1">
+                                <img class="wcard__bg" src="~/img/ui/cards/@(world.CardImage).png" alt="" aria-hidden="true" loading="lazy" />
                                 <h4 class="wcard__title font-pixel">@project.Title</h4>
                                 <div class="wcard__screen">
                                     @if (!string.IsNullOrEmpty(project.Image))

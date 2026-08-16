@@ -86,6 +86,8 @@ public static class SiteContent
             Color = "#f4a261",
             AccentClass = "text-kitchen",
             Icon = "🍳",
+            CardSkin = "k1",
+            CardImage = "kitchen-1",
             Projects = new List<Project>
             {
                 new Project
@@ -122,6 +124,8 @@ public static class SiteContent
             Color = "#e9c46a",
             AccentClass = "text-arcade",
             Icon = "🕹️",
+            CardSkin = "a2",
+            CardImage = "arcade-2",
             Projects = new List<Project>
             {
                 new Project
@@ -142,6 +146,8 @@ public static class SiteContent
             Color = "#2a9d8f",
             AccentClass = "text-control",
             Icon = "🖥️",
+            CardSkin = "c4",
+            CardImage = "control-4",
             Projects = new List<Project>
             {
                 new Project
