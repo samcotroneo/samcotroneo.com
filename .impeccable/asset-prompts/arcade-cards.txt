@@ -1,0 +1,17 @@
+A game-UI concept sheet of FOUR portrait project-card container designs arranged in a strict uniform grid of 2 columns x 2 rows. Each design must EXACTLY fill its own 512x768 cell, edge to edge, with zero gaps, zero margins and zero overlap between cells. Flat front-on view, no perspective, no drop shadows outside the card.
+
+Style: 16-bit pixel art, SNES/GBA era game UI craft, crisp chunky pixels, limited palette, subtle dithering, dark outline work. Cohesive with a cozy night-time coder den: deep near-black purple (#14111f) cabinet bodies, warm amber (#e9c46a) marquee glow, copper (#f4a261) and muted teal (#2a9d8f) accents, magenta/cyan neon sparingly. Theme: retro arcade cabinets.
+
+Every card must have THREE empty flat areas for later text overlay, in this layout:
+1. A marquee band near the top (flat glowing solid color, no text, no letters, no numbers).
+2. A recessed CRT screen window in the upper middle (solid very dark, faint scanline texture allowed, subtle screen curvature shading) about half the card width's height.
+3. A large flat lower control panel (solid dark color, minimal texture, maybe a single joystick or buttons pushed to the far edges) for description text.
+No text, no letters, no numbers, no icons anywhere in the art.
+
+Four distinct designs, one per cell, left to right, top to bottom:
+1. Classic upright cabinet front, black-purple laminate, amber glowing marquee, chunky coin slot at the bottom edge.
+2. Neon synthwave cabinet, deep purple with cyan and magenta edge light strips, chrome trim.
+3. Woodgrain 1970s Atari-style cabinet, warm walnut sides, brass marquee clips, copper control deck.
+4. Sleek teal-grid tron-like terminal cabinet, dark body with glowing teal circuit seams and amber marquee.
+
+Uniform lighting across all four cells: soft warm light from top-left, gentle bottom-right shading. Background of each cell fully covered by the card art itself (the card IS the full cell content).

@@ -1,0 +1,10 @@
+{
+  "approvedAt": "2025-08-11T17:00:00Z",
+  "surface": "route:/",
+  "surfaceBrief": ".impeccable/surfaces/route.md",
+  "direction": "coder-den",
+  "label": "Cozy Bedroom Coder Den",
+  "comp": ".impeccable/sketches/challenger-coder-den.png",
+  "source": ".impeccable/questions/direction-decision-5.json",
+  "chosenOptionId": "coder-den"
+}

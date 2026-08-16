@@ -1,0 +1,14 @@
+SNES/Genesis-era 16-bit pixel art scene background, game-grade quality, underground hacker den / control room, wide 2.5:1 composition. Fine pixel clusters, dithered gradient shading, dark outlines, limited per-element palette ramps. Same pixel density and line weight as matching room scenes in the same house. Dim, teal-lit, moody.
+
+Palette anchors: dark concrete grey-purple walls, teal #2a9d8f glow, green terminal glow, amber #e9c46a accents, night blue #131a33 shadows.
+
+Composition (straight-on, flat elevation view):
+- Upper half: a wall of glowing monitors and screens tiled across the back wall, each showing abstract teal/green/amber code texture — dim pixel-line clusters and block shapes, NO readable characters, NO letters, NO numbers. Screens vary in size; some dimmer, some brighter, dithered glow bleeding into the dark room.
+- Middle: a long desk with a HOODED FIGURE seated at it, seen FROM BEHIND — face completely hidden, dark silhouette with a faint teal rim light tracing the hood and shoulders. Hunched slightly toward the screens.
+- Right side: a tall server rack with rows of tiny blinking LED dots (teal, amber, red), subtle glow.
+- Floor: dark concrete with cables snaking across it toward the desk and rack, dithered teal light pools.
+- Ceiling barely visible, dark, with a hanging cable or two.
+
+The CENTER HORIZONTAL BAND of the image stays relatively calm and dark so HTML cards can float on top; keep the figure low, below the band's midpoint.
+
+STRICT: absolutely no text, letters, numbers, words, or readable UI anywhere in the image. Only the one hooded figure, seen from behind, face hidden. No watermark, no frame, no border, no vignette overlay. Flat final PNG, no transparency.

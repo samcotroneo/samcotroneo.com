@@ -1,39 +1,26 @@
-@using System.Text.Json
-@using PortfolioSite.Models
-
-@{
-    var attributes = SiteContent.Attributes;
-    var attributesJson = JsonSerializer.Serialize(attributes);
-    var initialAttribute = attributes.Count > 0 ? attributes[0] : "Software Engineer";
-}
-
-<div class="border-b border-neutral-700 lg:mb-35">
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
-            <div class="flex flex-col items-center lg:items-start">
-                <h1 class="pb-8 text-5xl font-thin tracking-tight lg:mt-16 lg:text-8xl">
-                    Sam Cotroneo
-                </h1>
-                <span class="text-2xl text-center lg:text-left">Hi there! I'm a </span>
-                <span class="hero-attribute pb-24 lg:pb-16 text-3xl tracking-tight text-center lg:self-start" data-attributes='@Html.Raw(attributesJson)' data-interval="3200" aria-live="polite">
-                    <span class="hero-attribute__card">
-                        <span class="hero-attribute__face hero-attribute__face--front justify-center lg:justify-start bg-gradient-to-r bg-clip-text text-transparent">
-                            @initialAttribute
-                        </span>
-                        <span class="hero-attribute__face hero-attribute__face--back justify-center lg:justify-start bg-gradient-to-r bg-clip-text text-transparent">
-                            @initialAttribute
-                        </span>
-                    </span>
-                </span>
-                <span class="hidden from-pink-300 via-slate-500 to-purple-500 from-sky-300 via-emerald-300 to-cyan-400 from-amber-300 via-orange-400 to-red-500 from-violet-300 via-fuchsia-400 to-green-400 from-red-500 via-slate-300 to-rose-400"></span>
-            </div>
-        </div>
-        <div class="w-full lg:w-1/2 flex items-center justify-center">
-            <div class="relative size-80 lg:size-96">
-                <div class="hero-glow" aria-hidden="true"></div>
-                <div class="hero-sparkles" aria-hidden="true"></div>
-                <img src="~/assets/ProfilePicture.png" alt="Profile Picture" class="absolute top-0 left-0 z-10" />
-            </div>
-        </div>
+<section id="top" class="relative min-h-svh overflow-hidden" aria-label="Introduction">
+    <div class="hero-scene pointer-events-none absolute inset-0" aria-hidden="true">
+        <canvas class="hero-room absolute inset-0 h-full w-full"></canvas>
+        <img class="hero-art absolute inset-0 h-full w-full object-cover" src="~/img/scenes/hero.png" alt="" loading="eager" onerror="this.remove()" />
+        <canvas class="hero-fx absolute inset-0 h-full w-full"></canvas>
     </div>
-</div>
+    <div class="hero-tint pointer-events-none absolute inset-0 z-[2]" aria-hidden="true"></div>
+
+    <!-- Title / tagline, centered in the scene -->
+    <div class="pointer-events-none absolute left-1/2 top-[54%] z-10 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center">
+        <h1 class="font-pixel text-xl uppercase leading-relaxed text-copper [text-shadow:4px_4px_0_rgba(10,9,15,0.9),0_0_24px_rgba(244,162,97,0.45),0_0_64px_rgba(244,162,97,0.25)] sm:text-3xl md:text-4xl">
+            Sam Cotroneo
+        </h1>
+        <p class="mt-4 font-display text-[11px] uppercase tracking-[0.16em] text-crt [text-shadow:0_1px_8px_rgba(0,0,0,0.8)] sm:text-xs">
+            Software Engineer · Coder Den
+        </p>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-[4%] left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 opacity-60">
+        <span class="font-display text-[10px] uppercase tracking-[0.2em] text-crt/80">Scroll</span>
+        <svg class="h-4 w-4 animate-float text-crt/80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+    </div>
+</section>

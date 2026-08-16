@@ -1,28 +1,35 @@
 @{
     var technologies = new[]
     {
-        new { Image = "/assets/technologies/dotnet-svgrepo-com.svg", Alt = ".NET Logo" },
-        new { Image = "/assets/technologies/blazor-svgrepo-com.svg", Alt = "Blazor Logo" },
-        new { Image = "/assets/technologies/html-5-svgrepo-com.svg", Alt = "HTML 5 Logo" },
-        new { Image = "/assets/technologies/css-3-svgrepo-com.svg", Alt = "CSS 3 Logo" },
-        new { Image = "/assets/technologies/javascript-svgrepo-com.svg", Alt = "Javascript Logo" },
-        new { Image = "/assets/technologies/node-js-svgrepo-com.svg", Alt = "Node JS Logo" },
-        new { Image = "/assets/technologies/microsoft-sql-server-logo-svgrepo-com.svg", Alt = "MS SQL Server Logo" },
-        new { Image = "/assets/technologies/nginx-logo-svgrepo-com.svg", Alt = "Nginx Logo" },
-        new { Image = "/assets/technologies/docker-svgrepo-com.svg", Alt = "Docker Logo" },
-        new { Image = "/assets/technologies/azure-svgrepo-com.svg", Alt = "Azure Logo" },
-        new { Image = "/assets/technologies/microsoft-windows-svgrepo-com.svg", Alt = "Windows Logo" },
-        new { Image = "/assets/technologies/linux-svgrepo-com.svg", Alt = "Linux Logo" }
+        new { Name = ".NET", Image = "/assets/technologies/dotnet-svgrepo-com.svg", Alt = ".NET Logo" },
+        new { Name = "Blazor", Image = "/assets/technologies/blazor-svgrepo-com.svg", Alt = "Blazor Logo" },
+        new { Name = "HTML 5", Image = "/assets/technologies/html-5-svgrepo-com.svg", Alt = "HTML 5 Logo" },
+        new { Name = "CSS 3", Image = "/assets/technologies/css-3-svgrepo-com.svg", Alt = "CSS 3 Logo" },
+        new { Name = "JavaScript", Image = "/assets/technologies/javascript-svgrepo-com.svg", Alt = "Javascript Logo" },
+        new { Name = "Node.js", Image = "/assets/technologies/node-js-svgrepo-com.svg", Alt = "Node JS Logo" },
+        new { Name = "SQL Server", Image = "/assets/technologies/microsoft-sql-server-logo-svgrepo-com.svg", Alt = "MS SQL Server Logo" },
+        new { Name = "Nginx", Image = "/assets/technologies/nginx-logo-svgrepo-com.svg", Alt = "Nginx Logo" },
+        new { Name = "Docker", Image = "/assets/technologies/docker-svgrepo-com.svg", Alt = "Docker Logo" },
+        new { Name = "Azure", Image = "/assets/technologies/azure-svgrepo-com.svg", Alt = "Azure Logo" },
+        new { Name = "Windows", Image = "/assets/technologies/microsoft-windows-svgrepo-com.svg", Alt = "Windows Logo" },
+        new { Name = "Linux", Image = "/assets/technologies/linux-svgrepo-com.svg", Alt = "Linux Logo" }
     };
 }
 
-<div class="border-b border-neutral-700 py-4">
+<section id="technologies" class="py-24" aria-labelledby="technologies-heading">
+    <div class="mb-10">
+        <p class="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-crt/80">// Trophy cabinet</p>
+        <h2 id="technologies-heading" class="font-pixel text-lg uppercase leading-relaxed text-copper sm:text-xl">Achievements unlocked</h2>
+        <p class="mt-4 text-neutral-400">Tools picked up on the run so far.</p>
+    </div>
+
     <div class="tech-marquee" aria-label="Scrolling list of technologies">
         <div class="tech-marquee__track">
             @foreach (var tech in technologies)
             {
-                <div class="tech-marquee__item rounded-2xl border-4 border-neutral-800 p-4">
-                    <img src="@tech.Image" alt="@tech.Alt" class="w-16 h-16" />
+                <div class="tech-marquee__item trophy-card">
+                    <img class="trophy-card__bg" src="/img/ui/trophy-copper.png" alt="" aria-hidden="true" />
+                    <img src="@tech.Image" alt="@tech.Alt" class="trophy-card__icon h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
                 </div>
             }
         </div>
@@ -30,10 +37,11 @@
         <div class="tech-marquee__track" aria-hidden="true">
             @foreach (var tech in technologies)
             {
-                <div class="tech-marquee__item rounded-2xl border-4 border-neutral-800 p-4">
-                    <img src="@tech.Image" alt="@tech.Alt" class="w-16 h-16" />
+                <div class="tech-marquee__item trophy-card">
+                    <img class="trophy-card__bg" src="/img/ui/trophy-copper.png" alt="" aria-hidden="true" />
+                    <img src="@tech.Image" alt="" class="trophy-card__icon h-12 w-12 sm:h-14 sm:w-14" loading="lazy" />
                 </div>
             }
         </div>
     </div>
-</div>
+</section>

@@ -1,0 +1,17 @@
+SNES/Genesis-era 16-bit pixel art scene background, game-grade quality, straight-on view of a cosy coder bedroom at night, 16:9 wide composition. Fine pixel clusters, dithered gradient shading, dark outlines, limited per-element palette ramps. Warm light vs cool ambient contrast.
+
+Palette anchors: deep purple wall #211e30, lamp orange #f4a261, teal #2a9d8f, amber #e9c46a, night blue #131a33.
+
+Composition (straight-on, flat elevation view):
+- Bottom ~30%: full-width wooden desk with subtle pixel wood grain.
+- On the desk, centered: two modern thin-bezel monitors side by side; their screens DIM and DARK with only a faint teal code-glow texture (abstract dim pixel clusters, no readable characters). A small dark keyboard in front of the monitors.
+- Left on the desk: shaded table lamp with warm orange glow pooling softly on the desk surface.
+- Right on the desk: a small red coffee mug with a wisp of steam.
+- Wall behind the desk: dark warm purple with subtle dithered shading.
+- Tall window at upper left showing a starry night sky, a pale moon, and half-open venetian blinds casting slat shadows.
+- A taped-up poster on the wall with a red pixel-art space invader (poster graphic only, no text).
+- A small wall shelf at the right with colorful book spines.
+
+Mood: moody and cosy; warm lamp pool against cool moonlight. The CENTER HORIZONTAL BAND of the image (where the monitor area meets the wall) stays relatively calm and dark so HTML cards can float on top.
+
+STRICT: absolutely no text, letters, numbers, words, or readable UI anywhere in the image. No people. No watermark, no frame, no border, no vignette overlay. Flat final PNG, no transparency.
